@@ -17,14 +17,12 @@ import Menu from "../components/Menu/menu"
 
 class ProjectPage extends Component {
   componentDidMount() {
-    console.log()
-
-    const arrowButtonLeft = document.querySelector(".box-bt-left")
-    const arrowButtonRight = document.querySelector(".box-bt-right")
-
+    // console.log()
+    // const arrowButtonLeft = document.querySelector(".box-bt-left")
+    // const arrowButtonRight = document.querySelector(".box-bt-right")
     // setTimeout(() => {
-    arrowButtonLeft.classList.add("arrow-entered")
-    arrowButtonRight.classList.add("arrow-entered")
+    // arrowButtonLeft.classList.add("arrow-entered")
+    // arrowButtonRight.classList.add("arrow-entered")
     // }, 250)
   }
 
@@ -105,7 +103,7 @@ class ProjectPage extends Component {
         {/* testmenudata: {menuRight.phoneNumber} */}
         {/* </div> */}
 
-        <div className={`arrow-box box-bt-left`} onClick={handleArrowPrev}>
+        {/* <div className={`arrow-box box-bt-left`} onClick={handleArrowPrev}>
           <div className={`menu-trigger`}>
             <IconContext.Provider
               value={{ color: "white", size: "4em", height: "100" }}
@@ -113,8 +111,8 @@ class ProjectPage extends Component {
               <HiArrowNarrowUp />
             </IconContext.Provider>
           </div>
-        </div>
-
+        </div> */}
+        {/* 
         <div className={`arrow-box box-bt-right`} onClick={handleArrowNext}>
           <div className={`menu-trigger`}>
             <IconContext.Provider
@@ -123,7 +121,7 @@ class ProjectPage extends Component {
               <HiArrowNarrowDown />
             </IconContext.Provider>
           </div>
-        </div>
+        </div> */}
 
         {/* <div className="fullscreen-project-image" ref={this.topRef}> */}
         {/* <img src={`${myProjectData.fullScreenPhoto.fluid.src}`} /> */}
@@ -136,7 +134,7 @@ class ProjectPage extends Component {
             src={myProjectData.fullScreenPhoto.fluid.src} // use normal <img> attributes as props
             // width={image.width}
           /> */}
-        <LazyLoad ref={this.topRef}>
+        {/* <LazyLoad ref={this.topRef}>
           <div
             className={`slide-bg-fullscreen`}
             css={{
@@ -145,7 +143,7 @@ class ProjectPage extends Component {
                             )`,
             }}
           ></div>
-        </LazyLoad>
+        </LazyLoad> */}
         {/* </div> */}
 
         <div className="project-content-middle" ref={this.nextSectionRef}>
@@ -157,15 +155,17 @@ class ProjectPage extends Component {
 
               <div className="text-container">
                 <h2>{myProjectData.titlePart1}</h2>
-                <h2>{myProjectData.titlePart2}</h2>
+                {/* <h2>{myProjectData. }</h2> */}
                 <div className="project-description">
                   <p>{myProjectData.projectDescription}</p>
-                  <p>
-                    {myProjectData.areaText}:{" "}
-                    <strong>{myProjectData.areaValue}</strong>
-                  </p>
                 </div>
               </div>
+            </div>
+            <div className={`price-container`}>
+              <p>
+                {myProjectData.priceText}:{" "}
+                <strong>{myProjectData.areaValue}</strong>
+              </p>
             </div>
           </div>
 
@@ -180,20 +180,6 @@ class ProjectPage extends Component {
                 // width={image.width}
               />
             </div>
-          </div>
-        </div>
-
-        <div className="project-page-content-bottom">
-          <div className="fullscreen-project-image" ref={this.topRef}>
-            {/* <img src={`${myProjectData.fullScreenPhoto.fluid.src}`} /> */}
-            <LazyLoadImage
-              // alt={image.alt}
-              // height={image.height}
-              effect="blur"
-              placeholderSrc={myProjectData.fullScreenPhotoTwo.fluid.src}
-              src={myProjectData.fullScreenPhotoTwo.fluid.src} // use normal <img> attributes as props
-              // width={image.width}
-            />
           </div>
         </div>
       </div>
@@ -219,7 +205,7 @@ export const query = graphql`
           }
         }
         titlePart1
-        titlePart2
+
         readMore
         fullScreenPhoto {
           fluid {
@@ -236,7 +222,7 @@ export const query = graphql`
           }
         }
         projectDescription
-        areaText
+        priceText
         areaValue
         fullScreenPhotoTwo {
           fluid {
@@ -259,6 +245,12 @@ export const query = graphql`
           base64
         }
       }
+      instagramIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       instagramLink
       facebookicon {
         fixed(height: 35) {
@@ -266,12 +258,42 @@ export const query = graphql`
           base64
         }
       }
+      facebookIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       facebookLink
+      behanceIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceLink
+      elloCoIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloCoLink
     }
     menuLeftProject: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
-      projectsSubfield1
-      projectsSubfield2
       offerHeader
       offerSubfield
       aboutHeader

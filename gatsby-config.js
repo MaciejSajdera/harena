@@ -17,7 +17,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Mulish"],
+          families: ["Montserrat"],
         },
       },
     },
@@ -57,7 +57,7 @@ module.exports = {
       options: {
         // You can find your read-only API token under the Settings > API tokens
         // section of your administrative area:
-        apiToken: `b5021fc973eef94f7a89248c9e3758`,
+        apiToken: `c8e2caa8eb0e979c797dd1a98094de`,
         // If you are working on development/staging environment, you might want to
         // preview the latest version of records instead of the published one:
         previewMode: false,

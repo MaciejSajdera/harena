@@ -29,6 +29,7 @@ class Home extends React.Component {
       interiorProject,
       category,
       offer,
+      homeSlider,
     } = this.props.data
 
     const menuStyle = `menuStyleAbsolute`
@@ -47,8 +48,9 @@ class Home extends React.Component {
           interiorProject={interiorProject}
           category={category}
           offer={offer}
+          homeSlider={homeSlider}
         />
-        <Main data={projects} />
+        <Main data={homeSlider} />
       </>
     )
   }
@@ -58,6 +60,15 @@ export default Home
 
 export const query = graphql`
   query allProjectsDataHome($locale: String!) {
+    homeSlider: allDatoCmsHomeSlider(filter: { locale: { eq: $locale } }) {
+      nodes {
+        homeSlide {
+          fluid {
+            src
+          }
+        }
+      }
+    }
     projects: allDatoCmsProject(filter: { locale: { eq: $locale } }) {
       nodes {
         slug
@@ -73,7 +84,7 @@ export const query = graphql`
         }
         projectCategory
         titlePart1
-        titlePart2
+
         readMore
         projectSlogan
         fullScreenPhoto {
@@ -91,7 +102,7 @@ export const query = graphql`
           }
         }
         projectDescription
-        areaText
+        priceText
         areaValue
         fullScreenPhotoTwo {
           fluid {
@@ -113,6 +124,12 @@ export const query = graphql`
           base64
         }
       }
+      instagramIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       instagramLink
       facebookicon {
         fixed(height: 35) {
@@ -120,13 +137,43 @@ export const query = graphql`
           base64
         }
       }
+      facebookIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       facebookLink
+      behanceIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceLink
+      elloCoIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloCoLink
     }
 
     menuLeftIndex: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
-      projectsSubfield1
-      projectsSubfield2
       offerHeader
       offerSubfield
       aboutHeader

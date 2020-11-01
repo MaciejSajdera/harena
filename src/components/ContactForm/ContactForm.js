@@ -158,7 +158,7 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                       onChange={handleChange}
                     />
                   </p>
-                  <p>
+                  <p className={`button-wrapper`}>
                     <button type="submit">{data.en.submitText}</button>
                   </p>
                 </form>
@@ -248,7 +248,7 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                       onChange={handleChange}
                     />
                   </p>
-                  <p>
+                  <p className={`button-wrapper`}>
                     <button type="submit">{data.pl.submitText}</button>
                   </p>
                 </form>

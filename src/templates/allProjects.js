@@ -69,12 +69,7 @@ class allProjects extends React.Component {
                 return comparision
               })
               .map((element, index) => (
-                <div
-                  className={`single-project-tile ${
-                    index % 5 && index > 0 ? `` : `big-project-tile`
-                  }`}
-                  key={index}
-                >
+                <div className={`single-project-tile`} key={index}>
                   <Link
                     to={
                       element.locale === "pl"
@@ -92,16 +87,13 @@ class allProjects extends React.Component {
                       src={element.fullScreenPhoto.fluid.src} // use normal <img> attributes as props
                       // width={image.width}
                       style={{
-                        transitionDelay: `${0 + index / 10}s`,
+                        transitionDelay: `${0 + index / 8}s`,
                       }}
                     />
 
                     <div className={`title-container`}>
                       <h2 className={`project-title-1`}>
                         {element.titlePart1}
-                      </h2>
-                      <h2 className={`project-title-2`}>
-                        {element.titlePart2}
                       </h2>
 
                       <div className="text-on-hover">
@@ -142,7 +134,7 @@ export const query = graphql`
         }
         projectCategory
         titlePart1
-        titlePart2
+
         readMore
         projectSlogan
         fullScreenPhoto {
@@ -160,7 +152,7 @@ export const query = graphql`
           }
         }
         projectDescription
-        areaText
+        priceText
         areaValue
         fullScreenPhotoTwo {
           fluid {
@@ -182,6 +174,12 @@ export const query = graphql`
           base64
         }
       }
+      instagramIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       instagramLink
       facebookicon {
         fixed(height: 35) {
@@ -189,13 +187,43 @@ export const query = graphql`
           base64
         }
       }
+      facebookIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       facebookLink
+      behanceIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceLink
+      elloCoIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloCoLink
     }
 
     menuLeftIndex: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
-      projectsSubfield1
-      projectsSubfield2
       offerHeader
       offerSubfield
       aboutHeader

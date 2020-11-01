@@ -102,9 +102,9 @@ class allProjectsInterior extends React.Component {
                       <h2 className={`project-title-1`}>
                         {element.titlePart1}
                       </h2>
-                      <h2 className={`project-title-2`}>
-                        {element.titlePart2}
-                      </h2>
+                      {/* <h2 className={`project-title-2`}>
+                        {element. }
+                      </h2> */}
 
                       <div className="text-on-hover">
                         <p className="project-slogan">
@@ -144,7 +144,7 @@ export const query = graphql`
         }
         projectCategory
         titlePart1
-        titlePart2
+
         readMore
         projectSlogan
         fullScreenPhoto {
@@ -162,7 +162,7 @@ export const query = graphql`
           }
         }
         projectDescription
-        areaText
+        priceText
         areaValue
         fullScreenPhotoTwo {
           fluid {
@@ -184,6 +184,12 @@ export const query = graphql`
           base64
         }
       }
+      instagramIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       instagramLink
       facebookicon {
         fixed(height: 35) {
@@ -191,13 +197,43 @@ export const query = graphql`
           base64
         }
       }
+      facebookIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
       facebookLink
+      behanceIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      behanceLink
+      elloCoIcon {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloIconHover {
+        fixed(height: 35) {
+          src
+          base64
+        }
+      }
+      elloCoLink
     }
 
     menuLeftIndex: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
-      projectsSubfield1
-      projectsSubfield2
       offerHeader
       offerSubfield
       aboutHeader

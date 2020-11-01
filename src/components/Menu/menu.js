@@ -26,9 +26,18 @@ const Menu = ({
           }
         }
       }
+      dark: datoCmsHeaderLogo {
+        logoImage {
+          fixed {
+            src
+            base64
+          }
+        }
+      }
     }
   `)
 
+  let darkLogo = data.dark.logoImage.fixed.src
   let lightLogo = data.light.logoImage.fixed.src
 
   const [isOpen, setIsOpen] = useState(false)
@@ -37,6 +46,22 @@ const Menu = ({
 
   return (
     <>
+      <div className={`contact-form-container ${isOpen ? "form-active" : ""}`}>
+        {/* <div className="contact-form-wrapper"> */}
+        {/* <h3>Napisz do nas</h3> */}
+        {/* </div> */}
+
+        <ContactForm handleContactFormToggle={handleContactFormToggle} />
+      </div>
+
+      <div
+        className={`contact-form-title ${isOpen ? "title-hidden" : ""}`}
+        onClick={() => {
+          handleContactFormToggle()
+        }}
+      >
+        <p>{dataMenuLeft.contactHeader}</p>
+      </div>
       <myContext.Consumer>
         {({ handleNavToggle, navToggled, set }) => (
           <div className={`menu ${navToggled ? `active` : ""}`}>
@@ -60,31 +85,90 @@ const Menu = ({
               </div>
 
               <div className={`menu-inner`}>
-                <div className={`lang-switch`}>
-                  <Link
-                    to="/"
-                    onClick={() => {
-                      // set(data.menuRightEN)
-                      // langToggle()
-                      // langSwitch(true)
-                    }}
-                  >
-                    PL
-                  </Link>
+                <div className="additional-menu">
+                  <div className="icons">
+                    <a
+                      href={`${dataMenu.facebookLink}`}
+                      target="_blank"
+                      css={{
+                        backgroundImage: `url(${dataMenu.facebookicon.fixed.src})`,
+                        backgroundRepeat: `no-repeat`,
+                        ":hover": {
+                          backgroundImage: `url(${dataMenu.facebookIconHover.fixed.src})`,
+                        },
+                      }}
+                    ></a>
 
-                  <Link
-                    to="/en"
-                    onClick={() => {
-                      // set(data.menuRightEN)
-                      // langToggle()
-                      // langSwitch(true)
-                    }}
-                  >
-                    EN
-                  </Link>
+                    <a
+                      href={`${dataMenu.instagramLink}`}
+                      target="_blank"
+                      css={{
+                        backgroundImage: `url(${dataMenu.instagramicon.fixed.src})`,
+                        backgroundRepeat: `no-repeat`,
+                        ":hover": {
+                          backgroundImage: `url(${dataMenu.instagramIconHover.fixed.src})`,
+                        },
+                      }}
+                    ></a>
+
+                    <a
+                      href={`${dataMenu.behanceLink}`}
+                      target="_blank"
+                      css={{
+                        backgroundImage: `url(${dataMenu.behanceIcon.fixed.src})`,
+                        backgroundRepeat: `no-repeat`,
+                        ":hover": {
+                          backgroundImage: `url(${dataMenu.behanceIconHover.fixed.src})`,
+                        },
+                      }}
+                    ></a>
+
+                    <a
+                      href={`${dataMenu.elloCoLink}`}
+                      target="_blank"
+                      css={{
+                        backgroundImage: `url(${dataMenu.elloCoIcon.fixed.src})`,
+                        backgroundRepeat: `no-repeat`,
+                        ":hover": {
+                          backgroundImage: `url(${dataMenu.elloIconHover.fixed.src})`,
+                        },
+                      }}
+                    ></a>
+                  </div>
+
+                  <div className={`lang-switch`}>
+                    <Link
+                      to="/"
+                      onClick={() => {
+                        // set(data.menuRightEN)
+                        // langToggle()
+                        // langSwitch(true)
+                      }}
+                    >
+                      PL
+                    </Link>
+                    |
+                    <Link
+                      to="/en"
+                      onClick={() => {
+                        // set(data.menuRightEN)
+                        // langToggle()
+                        // langSwitch(true)
+                      }}
+                    >
+                      EN
+                    </Link>
+                  </div>
                 </div>
 
                 <div className="menu-wrapper">
+                  <Link to={`/`}>
+                    <img
+                      className={`bottom-menu-logo`}
+                      src={darkLogo}
+                      alt=""
+                    ></img>
+                  </Link>
                   <div
                     className={`menu-left ${
                       navToggled ? "menu-left-part-active" : ""
@@ -101,7 +185,7 @@ const Menu = ({
                         <h3>{dataMenuLeft.projectsHeader}</h3>
                       </Link>
 
-                      <Link
+                      {/* <Link
                         to={
                           category.locale === "pl"
                             ? `/${category.categoryFirst}`
@@ -111,9 +195,9 @@ const Menu = ({
                         <p className={`project-subfield`}>
                           {dataMenuLeft.projectsSubfield1}
                         </p>
-                      </Link>
+                      </Link> */}
 
-                      <Link
+                      {/* <Link
                         to={
                           category.locale === "pl"
                             ? `/${category.categorySecond}`
@@ -123,15 +207,15 @@ const Menu = ({
                         <p className={`project-subfield`}>
                           {dataMenuLeft.projectsSubfield2}
                         </p>
-                      </Link>
+                      </Link> */}
                     </div>
 
                     <Link to={`/${offer.slug}`}>
                       <h3>
                         {dataMenuLeft.offerHeader}
-                        <p className="offer-subfield">
+                        {/* <p className="offer-subfield">
                           {dataMenuLeft.offerSubfield}
-                        </p>
+                        </p> */}
                       </h3>
                     </Link>
 
@@ -158,14 +242,14 @@ const Menu = ({
 
                         </div> */}
 
-                    <div
+                    {/* <div
                       className={`contact-form-container ${
                         isOpen ? "form-active" : ""
                       }`}
                     >
-                      {/* <div className="contact-form-wrapper"> */}
-                      {/* <h3>Napisz do nas</h3> */}
-                      {/* </div> */}
+                      <div className="contact-form-wrapper">
+                      <h3>Napisz do nas</h3>
+                      </div>
 
                       <ContactForm
                         handleContactFormToggle={handleContactFormToggle}
@@ -181,10 +265,10 @@ const Menu = ({
                       }}
                     >
                       {dataMenuLeft.contactHeader}
-                    </h3>
+                    </h3> */}
                   </div>
 
-                  <div
+                  {/* <div
                     className={`menu-right ${
                       isOpen ? "menu-right-contact-active" : ""
                     } ${navToggled ? "menu-right-part-active" : ""}`}
@@ -214,7 +298,7 @@ const Menu = ({
                         <img src={dataMenu.facebookicon.fixed.src} alt="" />
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
