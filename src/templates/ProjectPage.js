@@ -195,7 +195,7 @@ class ProjectPage extends Component {
                 spaceBetween={0}
                 slidesPerView={1}
                 mousewheel={{
-                  sensitivity: 4,
+                  sensitivity: 1,
                 }}
                 navigation
                 keyboard

@@ -84,6 +84,10 @@
       height: 50vh;
     }
 
+    @media screen and (min-width: 992px) {
+      width: 38.2%;
+    }
+
     @media screen and (max-width: 1640px) {
       h2 {
         font-size: 1.6rem;
@@ -132,6 +136,10 @@
     @media screen and (max-width: 992px) {
       height: 50vh;
       order: 1;
+    }
+
+    @media screen and (min-width: 992px) {
+      width: 61.8%;
     }
 
     .swiper-container {
@@ -211,7 +219,14 @@
   h2 {
     font-size: 3rem;
     line-height: 1.4;
-    margin-bottom: 0;
+
+    @media screen and (max-width: 992px) {
+      text-align: center;
+    }
+
+    @media screen and (min-width: 992px) {
+      font-size: 2rem;
+    }
 
     &:nth-child(2) {
       margin-bottom: 0.5em;

@@ -33,6 +33,10 @@ $white: #fff;
 //     background-color: #0c0c0c;
 // }
 
+h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
 h2 {
   font-family: "Montserrat", sans-serif;
 }
@@ -83,7 +87,7 @@ p {
   height: 100vh;
   width: 100%;
   color: white;
-  background: #0c0c0c;
+  // background: #0c0c0c;
   background-size: cover;
 }
 

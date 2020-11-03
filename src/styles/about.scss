@@ -8,16 +8,16 @@
     z-index: 2;
     width: 100%;
     height: 100%;
-    transition: all 0.75s linear;
+    transition: all 0.3s linear;
     backdrop-filter: blur(10px); /* apply the blur */
     pointer-events: none; /* make the pseudo class click-through */
   }
 
   .subpage-content-wrapper {
-    transform: translateY(5%);
+    transform: translateY(10%);
     opacity: 0;
     z-index: 3;
-    transition: transform 0.4s ease, opacity 0.5s ease;
+    transition: all 0.3s ease-in-out;
   }
 
   @media screen and (max-height: 650px) {
@@ -36,9 +36,6 @@
   .subpage-content-entered {
     transform: translateY(0%);
     opacity: 1;
-    @media screen and (min-width: 1100px) {
-      transform: translateY(-30%);
-    }
   }
 }
 
@@ -79,7 +76,7 @@
     max-width: 600px;
     // font-size: 1.5rem;
     // line-height: 1.5;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   @media screen and (min-width: 1100px) {
