@@ -21,6 +21,14 @@ class allProjects extends React.Component {
     this.context.navToggled
       ? this.context.handleNavToggle()
       : console.log("nav open")
+
+    const projectCategoryMenu = document.querySelector(
+      ".projects-category-menu"
+    )
+
+    setTimeout(() => {
+      projectCategoryMenu.classList.add("projects-category-menu-mounted")
+    }, 0)
   }
 
   render() {
@@ -108,6 +116,33 @@ class allProjects extends React.Component {
               ))}
           </div>
         </main>
+        <div className="projects-category-menu">
+          <div className="project-category-wrapper">
+            <Link
+              to={
+                category.locale === "pl"
+                  ? `/${category.categoryFirstSlug}`
+                  : `/${about.locale}/${category.categoryFirstSlug}`
+              }
+            >
+              <p className={`project-subfield`}>{category.categoryFirstName}</p>
+            </Link>
+
+            <span className={`lang-separator`}>|</span>
+
+            <Link
+              to={
+                category.locale === "pl"
+                  ? `/${category.categorySecondSlug}`
+                  : `/${about.locale}/${category.categorySecondSlug}`
+              }
+            >
+              <p className={`project-subfield`}>
+                {category.categorySecondName}
+              </p>
+            </Link>
+          </div>
+        </div>
       </>
     )
   }
@@ -125,13 +160,6 @@ export const query = graphql`
         locale
         id
         position
-        thumbnail {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
         projectCategory
         titlePart1
 
@@ -144,23 +172,9 @@ export const query = graphql`
             srcSet
           }
         }
-        secondaryPhoto {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
         projectDescription
         priceText
         areaValue
-        fullScreenPhotoTwo {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
       }
     }
     menuRightIndex: datoCmsMenuRight(locale: { eq: $locale }) {
@@ -225,11 +239,9 @@ export const query = graphql`
     menuLeftIndex: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
       offerHeader
-      offerSubfield
+
       aboutHeader
-      individualCustomer
-      individualSubfield1
-      individualSubfield2
+
       contactHeader
       locale
     }
@@ -271,30 +283,14 @@ export const query = graphql`
       }
     }
     category: datoCmsCategory(locale: { eq: $locale }) {
-      categoryFirst
-      categorySecond
+      categoryFirstSlug
+      categoryFirstName
+      categorySecondSlug
+      categorySecondName
       locale
     }
 
     offer: datoCmsOffer(locale: { eq: $locale }) {
-      offerArchitectsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerDesignLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerInteriorsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
       locale
       slug
     }

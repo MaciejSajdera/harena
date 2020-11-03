@@ -15,6 +15,26 @@ import { IconContext } from "react-icons"
 import Header from "../components/Header/header"
 import Menu from "../components/Menu/menu"
 
+import { Swiper, SwiperSlide } from "swiper/react"
+import SwiperCore, {
+  Navigation,
+  A11y,
+  Lazy,
+  Keyboard,
+  Mousewheel,
+  Autoplay,
+  Pagination,
+} from "swiper"
+SwiperCore.use([
+  Navigation,
+  Mousewheel,
+  Keyboard,
+  A11y,
+  Lazy,
+  Autoplay,
+  Pagination,
+])
+
 class ProjectPage extends Component {
   componentDidMount() {
     // console.log()
@@ -171,14 +191,60 @@ class ProjectPage extends Component {
 
           <div className="content section-right">
             <div className="secondary-project-image">
+              <Swiper
+                spaceBetween={0}
+                slidesPerView={1}
+                mousewheel={{
+                  sensitivity: 4,
+                }}
+                navigation
+                keyboard
+                pagination={{ clickable: true }}
+                a11y
+                autoplay={{
+                  delay: 6000,
+                  stopOnLastSlide: true,
+                }}
+                lazy={{ loadPrevNext: true, loadPrevNextAmount: 3 }}
+              >
+                {myProjectData.productPhotos.map((photo, index) => {
+                  return (
+                    <SwiperSlide
+                      key={index}
+                      id={`slide-id-${index}`}
+                      onClick={this.handleTransitionLinkType}
+                      onMouseLeave={this.handleOnMouseLeave}
+                      // onClick={e => scrollTo(`#slide-id-${index}`)}
+                    >
+                      {/* <LazyLoad>
+                        <div
+                          className={`slide-bg-fullscreen`}
+                          css={{
+                            backgroundImage: `url(
+                              ${photo.url}
+                            )`,
+                          }}
+                        ></div>
+                      </LazyLoad> */}
+                      <LazyLoadImage
+                        // alt={image.alt}
+                        // height={image.height}
+                        effect="blur"
+                        src={photo.url} // use normal <img> attributes as props
+                        // width={image.width}
+                      />
+                    </SwiperSlide>
+                  )
+                })}
+              </Swiper>
               {/* <img src={`${myProjectData.fullScreenPhoto.fluid.src}`} /> */}
-              <LazyLoadImage
+              {/* <LazyLoadImage
                 // alt={image.alt}
                 // height={image.height}
                 effect="blur"
                 src={myProjectData.secondaryPhoto.fluid.src} // use normal <img> attributes as props
                 // width={image.width}
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -197,24 +263,9 @@ export const query = graphql`
         locale
         id
         position
-        thumbnail {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
         titlePart1
-
         readMore
         fullScreenPhoto {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
-        secondaryPhoto {
           fluid {
             src
             base64
@@ -224,12 +275,9 @@ export const query = graphql`
         projectDescription
         priceText
         areaValue
-        fullScreenPhotoTwo {
-          fluid {
-            src
-            base64
-            srcSet
-          }
+        productPhotos {
+          url
+          alt
         }
       }
     }
@@ -295,11 +343,9 @@ export const query = graphql`
     menuLeftProject: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
       offerHeader
-      offerSubfield
+
       aboutHeader
-      individualCustomer
-      individualSubfield1
-      individualSubfield2
+
       contactHeader
     }
 
@@ -340,30 +386,12 @@ export const query = graphql`
       }
     }
     category: datoCmsCategory(locale: { eq: $locale }) {
-      categoryFirst
-      categorySecond
+      categoryFirstSlug
+      categorySecondSlug
       locale
     }
 
     offer: datoCmsOffer(locale: { eq: $locale }) {
-      offerArchitectsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerDesignLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerInteriorsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
       locale
       slug
     }

@@ -1,9 +1,22 @@
-.about {
+.about,
+.contact {
   flex-flow: column;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    transition: all 0.75s linear;
+    backdrop-filter: blur(10px); /* apply the blur */
+    pointer-events: none; /* make the pseudo class click-through */
+  }
 
   .subpage-content-wrapper {
     transform: translateY(5%);
     opacity: 0;
+    z-index: 3;
     transition: transform 0.4s ease, opacity 0.5s ease;
   }
 
@@ -23,6 +36,22 @@
   .subpage-content-entered {
     transform: translateY(0%);
     opacity: 1;
+    @media screen and (min-width: 1100px) {
+      transform: translateY(-30%);
+    }
+  }
+}
+
+.about-entered {
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    -webkit-backdrop-filter: blur(0px) !important; /* apply the blur */
+    backdrop-filter: blur(0px) !important; /* apply the blur */
+    pointer-events: none; /* make the pseudo class click-through */
   }
 }
 
@@ -38,7 +67,7 @@
 .about-content {
   max-width: 270px;
   line-height: 1.7;
-  font-size: 1rem;
+  font-size: 0.8rem;
   opacity: 0;
   transition: all 0.6s ease-in-out;
 
@@ -50,12 +79,13 @@
     max-width: 600px;
     // font-size: 1.5rem;
     // line-height: 1.5;
-    font-size: 1.3rem;
+    font-size: 0.8rem;
   }
 
   @media screen and (min-width: 1100px) {
     max-width: 1100px;
     // font-size: 1.3rem;
+    padding-right: 50%;
   }
 }
 

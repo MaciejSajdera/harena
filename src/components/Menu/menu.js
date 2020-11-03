@@ -54,142 +54,145 @@ const Menu = ({
         <ContactForm handleContactFormToggle={handleContactFormToggle} />
       </div>
 
-      <div
-        className={`contact-form-title ${isOpen ? "title-hidden" : ""}`}
-        onClick={() => {
-          handleContactFormToggle()
-        }}
-      >
-        <p>{dataMenuLeft.contactHeader}</p>
-      </div>
       <myContext.Consumer>
         {({ handleNavToggle, navToggled, set }) => (
-          <div className={`menu ${navToggled ? `active` : ""}`}>
-            <div className={`menu-container`}>
-              <div
-                className="menu-box"
-                onClick={() => handleNavToggle()}
-                tabIndex="0"
-                role="button"
-                aria-label="Open Menu"
-              >
-                {/* <span id={`menu-pop-up`} className={`menu-box`}></span> */}
+          <>
+            <div
+              className={`contact-form-title ${
+                navToggled ? "title-visible" : ""
+              }`}
+              onClick={() => {
+                handleContactFormToggle()
+              }}
+            >
+              <p>{dataMenuLeft.contactHeader}</p>
+            </div>
+            <div className={`menu ${navToggled ? `active` : ""}`}>
+              <div className={`menu-container`}>
                 <div
-                  className={`menu-trigger ${navToggled ? "active" : ""}`}
-                  id={`menu10`}
+                  className="menu-box"
+                  onClick={() => handleNavToggle()}
+                  tabIndex="0"
+                  role="button"
+                  aria-label="Open Menu"
                 >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-
-              <div className={`menu-inner`}>
-                <div className="additional-menu">
-                  <div className="icons">
-                    <a
-                      href={`${dataMenu.facebookLink}`}
-                      target="_blank"
-                      css={{
-                        backgroundImage: `url(${dataMenu.facebookicon.fixed.src})`,
-                        backgroundRepeat: `no-repeat`,
-                        ":hover": {
-                          backgroundImage: `url(${dataMenu.facebookIconHover.fixed.src})`,
-                        },
-                      }}
-                    ></a>
-
-                    <a
-                      href={`${dataMenu.instagramLink}`}
-                      target="_blank"
-                      css={{
-                        backgroundImage: `url(${dataMenu.instagramicon.fixed.src})`,
-                        backgroundRepeat: `no-repeat`,
-                        ":hover": {
-                          backgroundImage: `url(${dataMenu.instagramIconHover.fixed.src})`,
-                        },
-                      }}
-                    ></a>
-
-                    <a
-                      href={`${dataMenu.behanceLink}`}
-                      target="_blank"
-                      css={{
-                        backgroundImage: `url(${dataMenu.behanceIcon.fixed.src})`,
-                        backgroundRepeat: `no-repeat`,
-                        ":hover": {
-                          backgroundImage: `url(${dataMenu.behanceIconHover.fixed.src})`,
-                        },
-                      }}
-                    ></a>
-
-                    <a
-                      href={`${dataMenu.elloCoLink}`}
-                      target="_blank"
-                      css={{
-                        backgroundImage: `url(${dataMenu.elloCoIcon.fixed.src})`,
-                        backgroundRepeat: `no-repeat`,
-                        ":hover": {
-                          backgroundImage: `url(${dataMenu.elloIconHover.fixed.src})`,
-                        },
-                      }}
-                    ></a>
-                  </div>
-
-                  <div className={`lang-switch`}>
-                    <Link
-                      to="/"
-                      onClick={() => {
-                        // set(data.menuRightEN)
-                        // langToggle()
-                        // langSwitch(true)
-                      }}
-                    >
-                      PL
-                    </Link>
-                    |
-                    <Link
-                      to="/en"
-                      onClick={() => {
-                        // set(data.menuRightEN)
-                        // langToggle()
-                        // langSwitch(true)
-                      }}
-                    >
-                      EN
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="menu-wrapper">
-                  <Link to={`/`}>
-                    <img
-                      className={`bottom-menu-logo`}
-                      src={darkLogo}
-                      alt=""
-                    ></img>
-                  </Link>
+                  {/* <span id={`menu-pop-up`} className={`menu-box`}></span> */}
                   <div
-                    className={`menu-left ${
-                      navToggled ? "menu-left-part-active" : ""
-                    }`}
+                    className={`menu-trigger ${navToggled ? "active" : ""}`}
+                    id={`menu10`}
                   >
-                    <div className="menu-grouped-items">
-                      <Link
-                        to={
-                          about.locale === "pl"
-                            ? `/all`
-                            : `/${about.locale}/all`
-                        }
-                      >
-                        <h3>{dataMenuLeft.projectsHeader}</h3>
-                      </Link>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
 
-                      {/* <Link
+                <div className={`menu-inner`}>
+                  <div className="additional-menu">
+                    <div className="icons">
+                      <a
+                        href={`${dataMenu.facebookLink}`}
+                        target="_blank"
+                        css={{
+                          backgroundImage: `url(${dataMenu.facebookicon.fixed.src})`,
+                          backgroundRepeat: `no-repeat`,
+                          ":hover": {
+                            backgroundImage: `url(${dataMenu.facebookIconHover.fixed.src})`,
+                          },
+                        }}
+                      ></a>
+
+                      <a
+                        href={`${dataMenu.instagramLink}`}
+                        target="_blank"
+                        css={{
+                          backgroundImage: `url(${dataMenu.instagramicon.fixed.src})`,
+                          backgroundRepeat: `no-repeat`,
+                          ":hover": {
+                            backgroundImage: `url(${dataMenu.instagramIconHover.fixed.src})`,
+                          },
+                        }}
+                      ></a>
+
+                      <a
+                        href={`${dataMenu.behanceLink}`}
+                        target="_blank"
+                        css={{
+                          backgroundImage: `url(${dataMenu.behanceIcon.fixed.src})`,
+                          backgroundRepeat: `no-repeat`,
+                          ":hover": {
+                            backgroundImage: `url(${dataMenu.behanceIconHover.fixed.src})`,
+                          },
+                        }}
+                      ></a>
+
+                      <a
+                        href={`${dataMenu.elloCoLink}`}
+                        target="_blank"
+                        css={{
+                          backgroundImage: `url(${dataMenu.elloCoIcon.fixed.src})`,
+                          backgroundRepeat: `no-repeat`,
+                          ":hover": {
+                            backgroundImage: `url(${dataMenu.elloIconHover.fixed.src})`,
+                          },
+                        }}
+                      ></a>
+                    </div>
+
+                    <div className={`lang-switch`}>
+                      <Link
+                        to="/"
+                        onClick={() => {
+                          // set(data.menuRightEN)
+                          // langToggle()
+                          // langSwitch(true)
+                        }}
+                      >
+                        PL
+                      </Link>
+                      |
+                      <Link
+                        to="/en"
+                        onClick={() => {
+                          // set(data.menuRightEN)
+                          // langToggle()
+                          // langSwitch(true)
+                        }}
+                      >
+                        EN
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="menu-wrapper">
+                    <Link to={`/`} className={`link-bottom-logo`}>
+                      <img
+                        className={`bottom-menu-logo`}
+                        src={darkLogo}
+                        alt=""
+                      ></img>
+                    </Link>
+                    <div
+                      className={`menu-left ${
+                        navToggled ? "menu-left-part-active" : ""
+                      }`}
+                    >
+                      <div className="menu-grouped-items">
+                        <Link
+                          to={
+                            about.locale === "pl"
+                              ? `/all`
+                              : `/${about.locale}/all`
+                          }
+                        >
+                          <h3>{dataMenuLeft.projectsHeader}</h3>
+                        </Link>
+
+                        {/* <Link
                         to={
                           category.locale === "pl"
-                            ? `/${category.categoryFirst}`
-                            : `/${about.locale}/${category.categoryFirst}`
+                            ? `/${category.categoryFirstSlug}`
+                            : `/${about.locale}/${category.categoryFirstSlug}`
                         }
                       >
                         <p className={`project-subfield`}>
@@ -197,52 +200,52 @@ const Menu = ({
                         </p>
                       </Link> */}
 
-                      {/* <Link
+                        {/* <Link
                         to={
                           category.locale === "pl"
-                            ? `/${category.categorySecond}`
-                            : `/${about.locale}/${category.categorySecond}`
+                            ? `/${category.categorySecondSlug}`
+                            : `/${about.locale}/${category.categorySecondSlug}`
                         }
                       >
                         <p className={`project-subfield`}>
                           {dataMenuLeft.projectsSubfield2}
                         </p>
                       </Link> */}
-                    </div>
+                      </div>
 
-                    <Link to={`/${offer.slug}`}>
-                      <h3>
-                        {dataMenuLeft.offerHeader}
-                        {/* <p className="offer-subfield">
-                          {dataMenuLeft.offerSubfield}
+                      <Link to={`/${offer.slug}`}>
+                        <h3>
+                          {dataMenuLeft.offerHeader}
+                          {/* <p className="offer-subfield">
+                          {dataMenuLeft.}
                         </p> */}
-                      </h3>
-                    </Link>
+                        </h3>
+                      </Link>
 
-                    <Link
-                      to={
-                        about.locale === "pl"
-                          ? `/${about.slug}`
-                          : `/${about.locale}/${about.slug}`
-                      }
-                    >
-                      <h3>{dataMenuLeft.aboutHeader}</h3>
-                    </Link>
+                      <Link
+                        to={
+                          about.locale === "pl"
+                            ? `/${about.slug}`
+                            : `/${about.locale}/${about.slug}`
+                        }
+                      >
+                        <h3>{dataMenuLeft.aboutHeader}</h3>
+                      </Link>
 
-                    {/* <div className="menu-grouped-items">
-                          <h3>{dataMenuLeft.individualCustomer}</h3>
+                      {/* <div className="menu-grouped-items">
+                          <h3>{dataMenuLeft. }</h3>
 
                           <Link to={ about.locale === "pl" ? `/${houseProject.slug}` : `/${houseProject.locale}/${houseProject.slug}`}>
-                          <p>{dataMenuLeft.individualSubfield1}</p>
+                          <p>{dataMenuLeft. }</p>
                           </Link>
 
                           <Link to={ about.locale === "pl" ? `/${interiorProject.slug}` : `/${interiorProject.locale}/${interiorProject.slug}`}>
-                          <p className={`${isOpen ? "title-hidden" : ""}`}>{dataMenuLeft.individualSubfield2}</p>
+                          <p className={`${isOpen ? "title-hidden" : ""}`}>{dataMenuLeft. }</p>
                           </Link>
 
                         </div> */}
 
-                    {/* <div
+                      {/* <div
                       className={`contact-form-container ${
                         isOpen ? "form-active" : ""
                       }`}
@@ -266,9 +269,9 @@ const Menu = ({
                     >
                       {dataMenuLeft.contactHeader}
                     </h3> */}
-                  </div>
+                    </div>
 
-                  {/* <div
+                    {/* <div
                     className={`menu-right ${
                       isOpen ? "menu-right-contact-active" : ""
                     } ${navToggled ? "menu-right-part-active" : ""}`}
@@ -299,10 +302,11 @@ const Menu = ({
                       </a>
                     </div>
                   </div> */}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </myContext.Consumer>
     </>

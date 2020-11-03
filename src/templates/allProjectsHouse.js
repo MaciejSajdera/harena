@@ -20,6 +20,14 @@ class allProjectsHouse extends React.Component {
     this.context.navToggled
       ? this.context.handleNavToggle()
       : console.log("nav open")
+
+    const projectCategoryMenu = document.querySelector(
+      ".projects-category-menu"
+    )
+
+    setTimeout(() => {
+      projectCategoryMenu.classList.add("projects-category-menu-mounted")
+    }, 0)
   }
 
   render() {
@@ -57,7 +65,7 @@ class allProjectsHouse extends React.Component {
           <div className="all-grid-bg">
             {projects.nodes
               .filter(node => {
-                return node.projectCategory === category.categoryFirst
+                return node.projectCategory === category.categoryFirstSlug
               })
               .sort((a, b) => {
                 const positionA = a.position
@@ -71,12 +79,7 @@ class allProjectsHouse extends React.Component {
                 return comparision
               })
               .map((element, index) => (
-                <div
-                  className={`single-project-tile ${
-                    index % 5 && index > 0 ? `` : `big-project-tile`
-                  }`}
-                  key={index}
-                >
+                <div className={`single-project-tile`} key={index}>
                   <Link
                     to={
                       element.locale === "pl"
@@ -118,6 +121,31 @@ class allProjectsHouse extends React.Component {
               ))}
           </div>
         </main>
+        <div className="projects-category-menu">
+          <div className="project-category-wrapper">
+            <Link
+              to={
+                category.locale === "pl"
+                  ? `/${category.categoryFirstSlug}`
+                  : `/${about.locale}/${category.categoryFirstSlug}`
+              }
+            >
+              <p className={`project-subfield`}>{category.categoryFirstName}</p>
+            </Link>
+            <span className={`lang-separator`}>|</span>
+            <Link
+              to={
+                category.locale === "pl"
+                  ? `/${category.categorySecondSlug}`
+                  : `/${about.locale}/${category.categorySecondSlug}`
+              }
+            >
+              <p className={`project-subfield`}>
+                {category.categorySecondName}
+              </p>
+            </Link>
+          </div>
+        </div>
       </>
     )
   }
@@ -135,13 +163,6 @@ export const query = graphql`
         locale
         id
         position
-        thumbnail {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
         projectCategory
         titlePart1
 
@@ -154,23 +175,9 @@ export const query = graphql`
             srcSet
           }
         }
-        secondaryPhoto {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
         projectDescription
         priceText
         areaValue
-        fullScreenPhotoTwo {
-          fluid {
-            src
-            base64
-            srcSet
-          }
-        }
       }
     }
     menuRightIndex: datoCmsMenuRight(locale: { eq: $locale }) {
@@ -235,11 +242,9 @@ export const query = graphql`
     menuLeftIndex: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
       offerHeader
-      offerSubfield
+
       aboutHeader
-      individualCustomer
-      individualSubfield1
-      individualSubfield2
+
       contactHeader
       locale
     }
@@ -281,30 +286,14 @@ export const query = graphql`
       }
     }
     category: datoCmsCategory(locale: { eq: $locale }) {
-      categoryFirst
-      categorySecond
+      categoryFirstSlug
+      categoryFirstName
+      categorySecondSlug
+      categorySecondName
       locale
     }
 
     offer: datoCmsOffer(locale: { eq: $locale }) {
-      offerArchitectsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerDesignLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerInteriorsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
       locale
       slug
     }

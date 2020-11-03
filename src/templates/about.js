@@ -37,7 +37,15 @@ const About = props => {
         offer={offer}
       />
 
-      <div className={`subpage about`}>
+      <div
+        className={`subpage about ${
+          props.transitionStatus === `entered` ? `about-entered` : ``
+        }`}
+        css={{
+          backgroundImage: `url(${about.aboutBackground.fluid.src})!important`,
+          backgroundSize: `cover`,
+        }}
+      >
         <div
           className={`subpage-content-wrapper ${
             props.transitionStatus === `entered`
@@ -74,6 +82,11 @@ export const query = graphql`
     about: datoCmsAbout(locale: { eq: $locale }) {
       aboutTitle
       aboutContent
+      aboutBackground {
+        fluid {
+          src
+        }
+      }
       slug
       locale
     }
@@ -138,11 +151,9 @@ export const query = graphql`
     menuLeftProject: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
       offerHeader
-      offerSubfield
+
       aboutHeader
-      individualCustomer
-      individualSubfield1
-      individualSubfield2
+
       contactHeader
     }
 
@@ -167,30 +178,12 @@ export const query = graphql`
       }
     }
     category: datoCmsCategory(locale: { eq: $locale }) {
-      categoryFirst
-      categorySecond
+      categoryFirstSlug
+      categorySecondSlug
       locale
     }
 
     offer: datoCmsOffer(locale: { eq: $locale }) {
-      offerArchitectsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerDesignLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerInteriorsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
       locale
       slug
     }

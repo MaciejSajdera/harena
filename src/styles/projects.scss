@@ -63,7 +63,7 @@
 
   @media screen and (min-width: 992px) {
     flex-flow: row;
-    height: 100vh;
+    height: 90vh;
   }
 
   .content {
@@ -73,7 +73,7 @@
   }
 
   .section-left {
-    background-color: rgb(26, 26, 26);
+    background-color: rgb(48, 48, 48);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,6 +81,7 @@
 
     @media screen and (max-width: 992px) {
       order: 2;
+      height: 50vh;
     }
 
     @media screen and (max-width: 1640px) {
@@ -96,6 +97,7 @@
     }
 
     .content-wrapper {
+      height: 80%;
       @media screen and (min-width: 992px) {
         height: 60%;
         // border: 1px solid purple;
@@ -113,27 +115,73 @@
       @media screen and (min-width: 992px) {
         margin-top: 4em;
       }
+
+      @media screen and (max-width: 992px) {
+        height: 20%;
+        display: flex;
+
+        p {
+          margin-bottom: 0;
+          align-self: center;
+        }
+      }
     }
   }
 
   .section-right {
     @media screen and (max-width: 992px) {
+      height: 50vh;
       order: 1;
     }
 
-    .secondary-project-image {
+    .swiper-container {
+      width: 100%;
       height: 100%;
-
-      span {
-        height: 100%;
-        display: flex !important;
-      }
-
-      img {
-        height: 100%;
+      .lazy-load-image-background {
         width: 100%;
-        display: flex;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
+    }
+
+    .secondary-project-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: inherit;
+    bottom: 5vh;
+    width: 50px;
+
+    color: white;
+
+    @media screen and (max-width: 992px) {
+      bottom: 2.75vh;
+
+      &:after {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .swiper-button-prev {
+    left: 5em;
+    @media screen and (max-width: 992px) {
+      left: 1em;
+    }
+  }
+
+  .swiper-button-next {
+    right: 5em;
+    @media screen and (max-width: 992px) {
+      right: 1em;
     }
   }
 }
@@ -155,7 +203,7 @@
 
   @media screen and (max-width: 992px) {
     padding: 1.5em;
-    padding-top: 4em;
+    // padding-top: 4em;
     height: 100%;
     width: 100vw;
   }
@@ -179,12 +227,12 @@
     // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     // -webkit-border-radius: 10px;
     // border-radius: 10px;
-    background: rgb(41, 41, 41);
+    background: #303030;
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: white;
+    background: rgb(41, 41, 41);
   }
 }
 
@@ -207,9 +255,12 @@
   .slide-bg-fullscreen {
     width: 100%;
     height: 100vh;
-    background-position: 50% 100%;
+    background-position: center;
     background-size: cover;
 
+    @media screen and (max-width: 992px) {
+      height: 50vh;
+    }
     // transform: matrix(1.05, 0, 0, 1.05, 0, 0);
 
     // transition: transform 0.5s ease-in, filter 0.5s ease-in,
@@ -219,4 +270,84 @@
     //   filter: grayscale(100%) contrast(105%);
     // }
   }
+}
+
+.projects-category-menu {
+  background: rgba($color: #444444, $alpha: 0.35);
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 992px) {
+    position: fixed;
+    top: 30%;
+    width: 10%;
+    height: 50vh;
+    right: 0;
+    transform: translate(10vw, 0%);
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 100%;
+    height: 4.5vh;
+    transition: all 0.75s ease-in;
+    transform: translateY(-10vh);
+    position: absolute;
+    border-top-left-radius: 55px;
+    border-top-right-radius: 55px;
+  }
+}
+
+.project-category-wrapper {
+  @media screen and (max-width: 992px) {
+    flex-flow: column;
+    justify-content: space-around;
+  }
+  display: flex;
+  width: 10%;
+  height: 100%;
+
+  text-align: center;
+  margin: auto;
+  justify-content: space-between;
+
+  a,
+  span {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+    p {
+      margin-bottom: 0;
+
+      @media screen and (max-width: 992px) {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  span {
+    @media screen and (max-width: 992px) {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.projects-category-menu-mounted {
+  transform: translateY(-14.5vh);
+
+  @media screen and (max-width: 992px) {
+    transform: translate(0%, 0%);
+  }
+}
+
+.projects-category-header {
+  text-align: center;
+  color: #fff;
+  padding-top: 0.25em;
 }

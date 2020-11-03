@@ -107,9 +107,7 @@ export const query = graphql`
       projectsHeader
       offerHeader
       aboutHeader
-      individualCustomer
-      individualSubfield1
-      individualSubfield2
+
       contactHeader
     }
   }

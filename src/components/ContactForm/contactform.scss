@@ -8,9 +8,6 @@
 }
 
 .contact-form-title {
-  @media screen and (max-width: 992px) {
-    display: none;
-  }
   position: fixed;
   width: 200px;
   height: 50px;
@@ -23,6 +20,19 @@
   border: 1px solid #fff;
   text-align: center;
   align-self: center;
+
+  @media screen and (max-width: 992px) {
+    display: none;
+    top: inherit;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+.title-visible {
+  display: block;
+  z-index: 1000;
 }
 
 .contact-form-container {
@@ -35,10 +45,11 @@
   transition: opacity 0.3s ease-out;
   opacity: 0;
   width: 100%;
-  background: rgba(13, 13, 13, 0.65);
+  // background: rgba(13, 13, 13, 0.65);
+  backdrop-filter: blur(10px);
 
   @media screen and (max-width: 992px) {
-    top: -18%;
+    top: 6%;
   }
 
   @media screen and (min-width: 992px) {
@@ -77,6 +88,12 @@
   .contact-form {
     @media screen and (min-width: 992px) {
       width: 30%;
+    }
+
+    @media screen and (max-width: 992px) {
+      width: 80%;
+      margin: auto;
+      align-self: center;
     }
 
     h3 {
@@ -176,6 +193,10 @@
         margin-bottom: 0.5em;
         height: 3em;
         padding-left: 0.25em;
+
+        @media screen and (max-width: 992px) {
+          font-size: 0.76rem;
+        }
       }
       select:active,
       select:hover {
@@ -204,7 +225,7 @@
 }
 
 .form-active {
-  z-index: 2;
+  z-index: 1001;
   transform: translateY(0%);
   opacity: 1;
   transition: opacity 0.3s ease-out;

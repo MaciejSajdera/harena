@@ -36,68 +36,39 @@ const Offer = props => {
         offer={offer}
       />
 
-      <div className={`subpage`}>
-        <div className="offer-logos-wrapper">
-          <Link
-            to={
-              about.locale === "pl"
-                ? `/${offer.slug}/${houseProject.slug}`
-                : `/${offer.slug}/${houseProject.locale}/${houseProject.slug}`
-            }
-          >
-            <LazyLoadImage
-              // alt={image.alt}
-              // height={image.height}
-              effect="blur"
-              src={offer.offerArchitectsLogo.fixed.src} // use normal <img> attributes as props
-              // width={image.width}
-            />
-            <div className="text-on-hover">
-              <p className="project-slogan">{houseProject.pageName}</p>
-              <p className="read-more">ZOBACZ WIĘCEJ</p>
-            </div>
-          </Link>
+      <div
+        className={`subpage contact ${
+          props.transitionStatus === `entered` ? `about-entered` : ``
+        }`}
+        css={{
+          backgroundImage: `url(${offer.contactPageBackground.fluid.src})!important`,
+        }}
+      >
+        <div
+          className={`subpage-content-wrapper ${
+            props.transitionStatus === `entered`
+              ? `subpage-content-entered`
+              : ``
+          }`}
+        >
+          <h2>{menuRightProject.contactSlogan}</h2>
+          <p className={`contact-text-area`}>
+            {menuRightProject.contactTextarea}
+          </p>
 
-          <Link
-            to={
-              about.locale === "pl"
-                ? `/${offer.slug}/${interiorProject.slug}`
-                : `/${offer.slug}/${interiorProject.locale}/${interiorProject.slug}`
-            }
-          >
-            <LazyLoadImage
-              // alt={image.alt}
-              // height={image.height}
-              effect="blur"
-              src={offer.offerInteriorsLogo.fixed.src} // use normal <img> attributes as props
-              // width={image.width}
-            />
-
-            <div className="text-on-hover">
-              <p className="project-slogan">{interiorProject.pageName}</p>
-              <p className="read-more">ZOBACZ WIĘCEJ</p>
+          <div className={`menu-right`}>
+            <div className="menu-grouped-items">
+              <p>{menuRightProject.adressData1}</p>
+              <p>{menuRightProject.adressData2}</p>
             </div>
-          </Link>
 
-          <Link
-            to={
-              about.locale === "pl"
-                ? `/${offer.slug}/${designProject.slug}`
-                : `/${offer.slug}/${designProject.locale}/${designProject.slug}`
-            }
-          >
-            <LazyLoadImage
-              // alt={image.alt}
-              // height={image.height}
-              effect="blur"
-              src={offer.offerDesignLogo.fixed.src} // use normal <img> attributes as props
-              // width={image.width}
-            />
-            <div className="text-on-hover">
-              <p className="project-slogan">{designProject.pageName}</p>
-              <p className="read-more">ZOBACZ WIĘCEJ</p>
+            <div className="menu-grouped-items">
+              <a href={`tel:${menuRightProject.phoneNumber}`}>
+                {menuRightProject.phoneNumber}
+              </a>
+              <p>{menuRightProject.emailAdress}</p>
             </div>
-          </Link>
+          </div>
         </div>
       </div>
     </>
@@ -116,6 +87,8 @@ export const query = graphql`
     }
 
     menuRightProject: datoCmsMenuRight(locale: { eq: $locale }) {
+      contactSlogan
+      contactTextarea
       adressData1
       adressData2
       phoneNumber
@@ -177,11 +150,9 @@ export const query = graphql`
     menuLeftProject: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
       offerHeader
-      offerSubfield
+
       aboutHeader
-      individualCustomer
-      individualSubfield1
-      individualSubfield2
+
       contactHeader
     }
 
@@ -219,27 +190,14 @@ export const query = graphql`
     }
 
     category: datoCmsCategory(locale: { eq: $locale }) {
-      categoryFirst
-      categorySecond
+      categoryFirstSlug
+      categorySecondSlug
       locale
     }
 
     offer: datoCmsOffer(locale: { eq: $locale }) {
-      offerArchitectsLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerDesignLogo {
-        fixed {
-          base64
-          src
-        }
-      }
-      offerInteriorsLogo {
-        fixed {
-          base64
+      contactPageBackground {
+        fluid {
           src
         }
       }

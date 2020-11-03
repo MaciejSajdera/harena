@@ -33,17 +33,17 @@
     }
 
     .title-container {
-      @media screen and (max-width: 992px) {
-        height: 20%;
-      }
+      // @media screen and (max-width: 992px) {
+      //   height: 20%;
+      // }
 
       h2 {
         color: #fff;
       }
 
-      @media screen and (max-width: 992px) {
-        transform: translateY(0%);
-      }
+      // @media screen and (max-width: 992px) {
+      //   transform: translateY(0%);
+      // }
 
       h2 {
         font-size: 2rem;
@@ -67,9 +67,9 @@
 
     @media screen and (min-width: 992px) {
       &:hover {
-        .title-container {
-          transform: translateY(-80%);
-        }
+        // .title-container {
+        //   transform: translateY(0%);
+        // }
 
         .gatsby-image-wrapper {
           transform: scale(1.05);

@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  // background: rgba(0, 0, 0, 0.4);
 
   @media screen and (max-height: 420px) and (orientation: landscape) {
     top: 1em;
@@ -52,7 +52,7 @@
 }
 
 .menu-box {
-  background: rgba(54, 52, 52, 0.4);
+  // background: rgba(54, 52, 52, 0.4);
   @media screen and (min-width: 992px) {
     display: none;
   }
@@ -112,12 +112,12 @@ div.menu-trigger {
   }
 }
 
-#menu10:not(.active):hover span:nth-of-type(2) {
-  width: 70%;
-}
-#menu10:not(.active):hover span:nth-of-type(3) {
-  width: 35%;
-}
+// #menu10:not(.active):hover span:nth-of-type(2) {
+//   width: 70%;
+// }
+// #menu10:not(.active):hover span:nth-of-type(3) {
+//   width: 35%;
+// }
 
 #menu10.active span:nth-of-type(1) {
   -webkit-transform: translateY(12px) rotate(-45deg);
@@ -149,7 +149,7 @@ div.menu-trigger {
     width: 100vw;
     top: inherit;
     bottom: 0%;
-    height: 80px;
+    height: 10vh;
     background-color: rgba(255, 255, 255, 0.95);
   }
 
@@ -327,10 +327,7 @@ div.menu-trigger {
         }
 
         .title-hidden {
-          display: none;
-          @media screen and (min-width: 992px) {
-            display: block;
-          }
+          display: block;
         }
 
         .offer-subfield {
@@ -451,9 +448,17 @@ div.menu-trigger {
   align-items: center;
   margin-right: 2em;
 
+  @media screen and (max-width: 992px) {
+    position: absolute;
+    height: 30%;
+    width: 80%;
+    bottom: 10%;
+    margin-right: 0;
+  }
+
   .lang-switch {
     position: absolute;
-    // z-index:9999;
+    z-index: 9999;
     order: 1;
     width: 150px;
     height: 25px;
@@ -475,12 +480,25 @@ div.menu-trigger {
       position: static;
     }
 
+    @media screen and (max-width: 992px) {
+      color: white;
+    }
+
     a {
       text-decoration: none;
       padding: 1em;
 
+      @media screen and (max-width: 992px) {
+        color: white;
+        font-size: 1rem;
+      }
+
       &:visited {
         color: black;
+
+        @media screen and (max-width: 992px) {
+          color: white;
+        }
       }
     }
   }
@@ -493,6 +511,11 @@ div.menu-trigger {
     width: 50%;
     align-items: center;
     justify-content: space-around;
+    z-index: 9999;
+    @media screen and (max-width: 992px) {
+      width: 100%;
+      height: inherit;
+    }
 
     a {
       display: block;
@@ -526,5 +549,11 @@ div.menu-trigger {
         }
       }
     }
+  }
+}
+
+.link-bottom-logo {
+  @media screen and (max-width: 992px) {
+    display: none;
   }
 }

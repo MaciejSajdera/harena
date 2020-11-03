@@ -43,7 +43,7 @@ class Main extends React.Component {
     setTimeout(() => {
       swiperButtonLeft.classList.add("arrow-entered")
       swiperButtonRight.classList.add("arrow-entered")
-    }, 1200)
+    }, 300)
   }
 
   //https://dev.to/mattrothenberg/recreating-pentagram-com-a-deep-dive-with-gatsby-js-h75
