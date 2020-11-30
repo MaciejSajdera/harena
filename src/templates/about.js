@@ -42,7 +42,7 @@ const About = props => {
           props.transitionStatus === `entered` ? `about-entered` : ``
         }`}
         css={{
-          backgroundImage: `url(${about.aboutBackground.fluid.src})!important`,
+          backgroundImage: `url(${about.aboutBackground.fluid.src})`,
           backgroundSize: `cover`,
         }}
       >
