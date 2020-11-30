@@ -20,6 +20,7 @@
   border: 1px solid #fff;
   text-align: center;
   align-self: center;
+  cursor: pointer;
 
   @media screen and (max-width: 992px) {
     display: none;
@@ -49,7 +50,9 @@
   backdrop-filter: blur(10px);
 
   @media screen and (max-width: 992px) {
-    top: 25%;
+    height: 100vh;
+    padding-top: 25%;
+    top: 0;
   }
 
   @media screen and (min-width: 992px) {

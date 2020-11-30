@@ -456,6 +456,39 @@ div.menu-trigger {
     margin-right: 0;
   }
 
+  @media screen and (min-width: 480px) and (max-width: 992px) and (orientation: landscape) {
+    position: absolute;
+    height: 90%;
+    width: 30%;
+    bottom: 0%;
+    left: 0%;
+    margin-right: 0;
+    flex-flow: column;
+    justify-content: center;
+
+    .lang-switch {
+      position: static !important;
+      order: 2 !important;
+    }
+
+    .icons {
+      height: 70% !important;
+      display: flex;
+      /* width: 50%; */
+      align-items: flex-start;
+      justify-content: flex-end;
+      z-index: 9999;
+      flex-flow: column;
+      padding-bottom: 1em;
+      order: 1 !important;
+      a {
+        margin: 0.5em 2em !important;
+        width: 2em !important;
+        height: 2em !important;
+      }
+    }
+  }
+
   .lang-switch {
     position: absolute;
     z-index: 9999;
