@@ -4,6 +4,7 @@ import { Location } from "@reach/router"
 import { RiArrowGoBackFill } from "react-icons/ri"
 import { graphql, useStaticQuery } from "gatsby"
 // import { useForm } from "react-hook-form";
+import myContext from "../../../context"
 
 function encode(data) {
   return Object.keys(data)
@@ -257,7 +258,16 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     />
                   </p>
                   <p className={`button-wrapper`}>
-                    <button type="submit">{data.pl.submitText}</button>
+                    <myContext.Consumer>
+                      {({ handleContactFormToggle }) => (
+                        <button
+                          type="submit"
+                          onClick={() => handleContactFormToggle()}
+                        >
+                          {data.pl.submitText}
+                        </button>
+                      )}
+                    </myContext.Consumer>
                   </p>
                 </form>
               </>

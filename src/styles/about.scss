@@ -17,7 +17,7 @@
     transform: translateY(5%);
     opacity: 0;
     z-index: 3;
-    transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.2, 0.44, 0.54, 0.87);
   }
 
   @media screen and (max-height: 650px) {
