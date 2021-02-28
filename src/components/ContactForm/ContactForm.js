@@ -31,7 +31,10 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
         ...state,
       }),
     })
-      .then(() => navigate(form.getAttribute("action")))
+      .then(() => {
+        handleContactFormToggle()
+        navigate(form.getAttribute("action"))
+      })
       .catch(error => alert(error))
   }
 
@@ -252,12 +255,7 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                   <p className={`button-wrapper`}>
                     <myContext.Consumer>
                       {({ handleContactFormToggle }) => (
-                        <button
-                          type="submit"
-                          onClick={() => handleContactFormToggle()}
-                        >
-                          {data.pl.submitText}
-                        </button>
+                        <button type="submit">{data.pl.submitText}</button>
                       )}
                     </myContext.Consumer>
                   </p>
