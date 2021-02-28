@@ -41,10 +41,6 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
     query MyContactFormQuery {
       pl: datoCmsContactForm(locale: { eq: "pl" }) {
         formHeader
-        topic
-        topicOptions {
-          topicOptionField
-        }
         firstName
         surname
         subject
@@ -56,10 +52,6 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
 
       en: datoCmsContactForm(locale: { eq: "en" }) {
         formHeader
-        topic
-        topicOptions {
-          topicOptionField
-        }
         firstName
         surname
         subject
