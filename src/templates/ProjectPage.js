@@ -14,6 +14,7 @@ import { IconContext } from "react-icons"
 
 import Header from "../components/Header/header"
 import Menu from "../components/Menu/menu"
+import myContext from "../../context"
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, {
@@ -182,10 +183,20 @@ class ProjectPage extends Component {
               </div>
             </div>
             <div className={`price-container`}>
-              <p>
+              <p className={`price-container__price`}>
                 {myProjectData.priceText}:{" "}
                 <strong>{myProjectData.areaValue}</strong>
               </p>
+              <myContext.Consumer>
+                {({ isFormOpen, handleContactFormToggle }) => (
+                  <div
+                    className="order-button"
+                    onClick={() => handleContactFormToggle()}
+                  >
+                    <p>Zamów</p>
+                  </div>
+                )}
+              </myContext.Consumer>
             </div>
           </div>
 
@@ -214,26 +225,13 @@ class ProjectPage extends Component {
                       id={`slide-id-${index}`}
                       onClick={this.handleTransitionLinkType}
                       onMouseLeave={this.handleOnMouseLeave}
-                      // onClick={e => scrollTo(`#slide-id-${index}`)}
-                    >
-                      {/* <LazyLoad>
-                        <div
-                          className={`slide-bg-fullscreen`}
-                          css={{
-                            backgroundImage: `url(
-                              ${photo.url}
-                            )`,
-                          }}
-                        ></div>
-                      </LazyLoad> */}
-                      <LazyLoadImage
-                        // alt={image.alt}
-                        // height={image.height}
-                        effect="blur"
-                        src={photo.url} // use normal <img> attributes as props
-                        // width={image.width}
-                      />
-                    </SwiperSlide>
+                      style={{
+                        backgroundImage: `url(${photo.url})`,
+                        backgroundRepeat: `no-repeat`,
+                        backgroundSize: `cover`,
+                        backgroundPosition: `center`,
+                      }}
+                    ></SwiperSlide>
                   )
                 })}
               </Swiper>
@@ -287,65 +285,12 @@ export const query = graphql`
       adressData2
       phoneNumber
       emailAdress
-      instagramicon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      instagramIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      instagramLink
-      facebookicon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      facebookIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      facebookLink
-      behanceIcon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      behanceIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      behanceLink
-      elloCoIcon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      elloIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      elloCoLink
     }
+
     menuLeftProject: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
       offerHeader
-
       aboutHeader
-
       contactHeader
     }
 

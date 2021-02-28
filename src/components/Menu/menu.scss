@@ -247,7 +247,7 @@ div.menu-trigger {
     }
 
     p {
-      color: #7c7c7c;
+      // color: #7c7c7c;
       margin-bottom: 0.5em;
 
       @media screen and (max-height: 420px) and (orientation: landscape) {
@@ -450,6 +450,7 @@ div.menu-trigger {
 
   @media screen and (max-width: 992px) {
     position: absolute;
+    flex-flow: column;
     height: 30%;
     width: 80%;
     bottom: 10%;
@@ -482,6 +483,8 @@ div.menu-trigger {
       padding-bottom: 1em;
       order: 1 !important;
       a {
+        display: flex;
+        align-items: center;
         margin: 0.5em 2em !important;
         width: 2em !important;
         height: 2em !important;
@@ -490,7 +493,7 @@ div.menu-trigger {
   }
 
   .lang-switch {
-    position: absolute;
+    // position: absolute;
     z-index: 9999;
     order: 1;
     width: 150px;
@@ -546,28 +549,90 @@ div.menu-trigger {
     align-items: center;
     justify-content: space-around;
     z-index: 9999;
+
     @media screen and (max-width: 992px) {
       width: 100%;
       height: inherit;
     }
 
     a {
-      display: block;
+      display: flex;
       width: 2.5em;
       height: 2.5em;
+      align-items: center;
+      justify-content: center;
       background-size: contain;
       transition: all 0.2s ease-in;
+      border: 3px solid #c7c7c7;
+      border-radius: 50%;
+      padding: 10px;
+
       @media screen and (max-width: 992px) {
         margin: auto;
+        border: 2px solid #c7c7c7;
       }
 
       &:hover {
         transform: scale(1.05);
       }
 
+      svg {
+        path {
+          transition: all 0.2s ease-in;
+        }
+      }
+
       // @media screen and (min-width: 992px) {
       //   padding: 0 2em 0 0;
       // }
+    }
+
+    .facebook {
+      &:hover {
+        border-color: #3b5998;
+
+        svg {
+          path {
+            fill: #3b5998;
+          }
+        }
+      }
+    }
+
+    .instagram {
+      &:hover {
+        border-color: #00ca76;
+
+        svg {
+          path {
+            fill: #00ca76;
+          }
+        }
+      }
+    }
+
+    .behance {
+      &:hover {
+        border-color: rebeccapurple;
+
+        svg {
+          path {
+            fill: rebeccapurple;
+          }
+        }
+      }
+    }
+
+    .elloco {
+      &:hover {
+        border-color: #888888;
+
+        svg {
+          path {
+            fill: #888888;
+          }
+        }
+      }
     }
 
     img {

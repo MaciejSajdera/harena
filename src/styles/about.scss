@@ -2,22 +2,22 @@
 .contact {
   flex-flow: column;
 
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    transition: all 0.3s linear;
-    backdrop-filter: blur(10px); /* apply the blur */
-    pointer-events: none; /* make the pseudo class click-through */
-  }
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   z-index: 2;
+  //   width: 100%;
+  //   height: 100%;
+  //   transition: all 0.3s linear;
+  //   backdrop-filter: blur(10px); /* apply the blur */
+  //   pointer-events: none; /* make the pseudo class click-through */
+  // }
 
   .subpage-content-wrapper {
-    transform: translateY(10%);
+    transform: translateY(5%);
     opacity: 0;
     z-index: 3;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
   }
 
   @media screen and (max-height: 650px) {
@@ -39,34 +39,34 @@
   }
 }
 
-.about-entered {
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    -webkit-backdrop-filter: blur(0px) !important; /* apply the blur */
-    backdrop-filter: blur(0px) !important; /* apply the blur */
-    pointer-events: none; /* make the pseudo class click-through */
-  }
-}
+// .about-entered {
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     z-index: 2;
+//     width: 100%;
+//     height: 100%;
+//     -webkit-backdrop-filter: blur(0px) !important; /* apply the blur */
+//     backdrop-filter: blur(0px) !important; /* apply the blur */
+//     pointer-events: none; /* make the pseudo class click-through */
+//   }
+// }
 
-.about-header {
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
+// .about-header {
+//   opacity: 0;
+//   transition: all 0.2s ease-in;
+// }
 
-.about-header-entered {
-  opacity: 1;
-}
+// .about-header-entered {
+//   opacity: 1;
+// }
 
 .about-content {
   max-width: 270px;
   line-height: 1.7;
   font-size: 0.8rem;
   opacity: 0;
-  transition: all 0.6s ease-in-out;
+  // transition: all 0.2s ease-in;
 
   @media screen and (min-width: 360px) {
     max-width: 340px;

@@ -10,7 +10,7 @@
   }
 
   .single-project-tile {
-    height: 100vh;
+    height: 40vh;
     overflow: hidden;
 
     @media screen and (min-width: 992px) {
@@ -62,14 +62,14 @@
         // transform: translateY(-150%);
         .read-more {
           &:after {
-            width: 7.5em;
+            width: 4em;
           }
         }
       }
 
-      p {
-        font-size: 0.75rem;
-      }
+      // p {
+      //   font-size: 0.75rem;
+      // }
     }
 
     @media screen and (min-width: 992px) {
@@ -87,7 +87,7 @@
 
           .read-more {
             &:after {
-              width: 7.5em;
+              width: 4em;
             }
           }
         }
@@ -115,7 +115,7 @@
 
         .read-more {
           &:after {
-            width: 7.5em;
+            width: 4em;
           }
         }
       }

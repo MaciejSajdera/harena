@@ -46,6 +46,8 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
         }
         firstName
         surname
+        subject
+        phoneNumber
         emailAddress
         messageContent
         submitText
@@ -59,6 +61,8 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
         }
         firstName
         surname
+        subject
+        phoneNumber
         emailAddress
         messageContent
         submitText
@@ -109,27 +113,20 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     <input name="bot-field" onChange={handleChange} />
                   </p>
 
-                  <select
-                    name="topic"
-                    onChange={handleChange}
-                    defaultValue={`${data.en.topic}`}
-                  >
-                    <option
-                      value={`${data.en.topic}`}
-                      disabled
-                    >{`${data.en.topic}`}</option>
-                    {data.en.topicOptions.map((item, index) => (
-                      <option value={`${item.topicOptionField}`} key={index}>
-                        {item.topicOptionField}
-                      </option>
-                    ))}
-                  </select>
+                  <p>
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder={data.pl.subject}
+                      onChange={handleChange}
+                    />
+                  </p>
 
                   <p>
                     <input
                       type="text"
                       name="name"
-                      placeholder={data.en.firstName}
+                      placeholder={data.pl.firstName}
                       onChange={handleChange}
                     />
                   </p>
@@ -137,7 +134,16 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     <input
                       type="text"
                       name="surname"
-                      placeholder={data.en.surname}
+                      placeholder={data.pl.surname}
+                      onChange={handleChange}
+                    />
+                  </p>
+                  <p>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder={data.pl.phoneNumber}
+                      required
                       onChange={handleChange}
                     />
                   </p>
@@ -199,21 +205,14 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     <input name="bot-field" onChange={handleChange} />
                   </p>
 
-                  <select
-                    name="Temat"
-                    onChange={handleChange}
-                    defaultValue={`${data.pl.topic}`}
-                  >
-                    <option
-                      value={`${data.pl.topic}`}
-                      disabled
-                    >{`${data.pl.topic}`}</option>
-                    {data.pl.topicOptions.map((item, index) => (
-                      <option value={`${item.topicOptionField}`} key={index}>
-                        {item.topicOptionField}
-                      </option>
-                    ))}
-                  </select>
+                  <p>
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder={data.pl.subject}
+                      onChange={handleChange}
+                    />
+                  </p>
 
                   <p>
                     <input
@@ -228,6 +227,15 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                       type="text"
                       name="surname"
                       placeholder={data.pl.surname}
+                      onChange={handleChange}
+                    />
+                  </p>
+                  <p>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder={data.pl.phoneNumber}
+                      required
                       onChange={handleChange}
                     />
                   </p>

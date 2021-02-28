@@ -29,13 +29,6 @@ class Main extends React.Component {
     // this.handleTransitionLinkType = this.handleTransitionLinkType.bind(this);
   }
 
-  handleWheel = e => {
-    const delta = Math.sign(e.deltaY)
-    delta < 0
-      ? this.setState({ mouseWheelActive: false })
-      : this.setState({ mouseWheelActive: true })
-  }
-
   componentDidMount() {
     const swiperButtonLeft = document.querySelector(".swiper-button-prev")
     const swiperButtonRight = document.querySelector(".swiper-button-next")
@@ -52,32 +45,6 @@ class Main extends React.Component {
 
   render() {
     let data = this.props.data
-
-    let exitTransition
-
-    const TRANSITION_LENGTH = 1.1
-
-    const myExitTransition = () => {
-      return (exitTransition = {
-        length: TRANSITION_LENGTH,
-        trigger: () => {
-          console.log(`we are exiting home`)
-        },
-      })
-    }
-
-    const entryTransition = {
-      delay: TRANSITION_LENGTH, // Wait 1.5 seconds before entering
-      trigger: () => {
-        console.log("We are entering")
-        if (document && window) {
-          // Ensuring we're at the top of the page when the page loads
-          // prevents any additional JANK when the transition ends.
-          window.scrollTo(0, 0)
-          document.body.style.overflow = "visible"
-        }
-      },
-    }
 
     return (
       <main>
@@ -117,25 +84,15 @@ class Main extends React.Component {
                   onMouseLeave={this.handleOnMouseLeave}
                   // onClick={e => scrollTo(`#slide-id-${index}`)}
                 >
-                  <div className={`single-project-container`}>
-                    <LazyLoad>
-                      <div
-                        onWheel={this.handleWheel}
-                        className={`slide-bg-fullscreen
-                          ${
-                            this.state.mouseWheelActive
-                              ? `move-right`
-                              : `move-left`
-                          }
-                          `}
-                        css={{
-                          backgroundImage: `url(
-                              ${element.homeSlide.fluid.src}
-                            )`,
-                        }}
-                      ></div>
-                    </LazyLoad>
-
+                  <div
+                    className={`single-project-container`}
+                    style={{
+                      backgroundImage: `url(${element.homeSlide.fluid.src})`,
+                      backgroundRepeat: `no-repeat`,
+                      backgroundSize: `cover`,
+                      backgroundPosition: `center`,
+                    }}
+                  >
                     {/* <div className={`title-container`}>
                       <h2 className={`project-title-1`}>
                         {element.titlePart1}

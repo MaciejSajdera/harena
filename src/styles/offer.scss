@@ -3,16 +3,16 @@
 .contact {
   flex-flow: column;
 
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    transition: all 0.75s linear;
-    backdrop-filter: blur(10px); /* apply the blur */
-    pointer-events: none; /* make the pseudo class click-through */
-  }
+  // &:before {
+  // content: "";
+  // position: absolute;
+  // z-index: 2;
+  // width: 100%;
+  // height: 100%;
+  // transition: all 0.75s linear;
+  // backdrop-filter: blur(10px); /* apply the blur */
+  // pointer-events: none; /* make the pseudo class click-through */
+  // }
 
   .subpage-content-wrapper {
     width: 80%;

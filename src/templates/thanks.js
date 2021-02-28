@@ -1,15 +1,45 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
+import { Link, graphql } from "gatsby"
+import Menu from "../components/Menu/menu"
 import Header from "../components/Header/header"
 
+import myContext from "../../context"
+
 const Thanks = props => {
-  let { thanks } = props.data
+  let {
+    thanks,
+    about,
+    menuRightProject,
+    menuLeftProject,
+    houseProject,
+    interiorProject,
+    category,
+    offer,
+  } = props.data
 
   console.log(props.transitionStatus)
+  console.log(props.data)
+
+  const context = useContext(myContext)
+
+  useEffect(() => {
+    context.navToggled ? context.handleNavToggle() : console.log("nav open")
+  }, [])
 
   return (
     <>
       <Header logoLight />
-      <div className={`subpage`}>
+      <Menu
+        dataMenu={menuRightProject}
+        dataMenuLeft={menuLeftProject}
+        about={about}
+        houseProject={houseProject}
+        interiorProject={interiorProject}
+        category={category}
+        offer={offer}
+      />
+
+      <div className={`subpage subpage-contact`}>
         <div className="subpage-content-wrapper">
           <h1
             className={`thank-you-title ${
@@ -45,70 +75,62 @@ export const query = graphql`
       slug
       locale
     }
+
+    about: datoCmsAbout(locale: { eq: $locale }) {
+      aboutTitle
+      aboutContent
+      aboutBackground {
+        fluid {
+          src
+        }
+      }
+      slug
+      locale
+    }
+
     menuRightProject: datoCmsMenuRight(locale: { eq: $locale }) {
       adressData1
       adressData2
       phoneNumber
       emailAdress
-      instagramicon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      instagramIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      instagramLink
-      facebookicon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      facebookIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      facebookLink
-      behanceIcon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      behanceIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      behanceLink
-      elloCoIcon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      elloIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      elloCoLink
     }
+
     menuLeftProject: datoCmsMenuLeft(locale: { eq: $locale }) {
       projectsHeader
       offerHeader
       aboutHeader
-
       contactHeader
+    }
+
+    houseProject: datoCmsHouseProjectForClient(locale: { eq: $locale }) {
+      pageName
+      slug
+      locale
+      modularContent {
+        slideNumber
+        slideHeader
+        slideMainText
+      }
+    }
+    interiorProject: datoCmsInteriorProjectForClient(locale: { eq: $locale }) {
+      pageName
+      slug
+      locale
+      modularContent {
+        slideNumber
+        slideHeader
+        slideMainText
+      }
+    }
+    category: datoCmsCategory(locale: { eq: $locale }) {
+      categoryFirstSlug
+      categorySecondSlug
+      locale
+    }
+
+    offer: datoCmsOffer(locale: { eq: $locale }) {
+      locale
+      slug
     }
   }
 `

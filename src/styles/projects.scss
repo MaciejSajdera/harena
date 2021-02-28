@@ -85,7 +85,8 @@
     }
 
     @media screen and (min-width: 992px) {
-      width: 38.2%;
+      width: 45%;
+      padding: 5% 0;
     }
 
     @media screen and (max-width: 1640px) {
@@ -101,9 +102,10 @@
     }
 
     .content-wrapper {
-      height: 80%;
+      height: 60%;
+
       @media screen and (min-width: 992px) {
-        height: 60%;
+        // height: 60%;
         // border: 1px solid purple;
         width: 70%;
         display: flex;
@@ -111,23 +113,36 @@
 
         .text-container {
           padding-top: 0;
+
+          .project-description {
+            p {
+              line-height: 1.5;
+            }
+          }
         }
       }
     }
 
     .price-container {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+
       @media screen and (min-width: 992px) {
         margin-top: 4em;
       }
 
       @media screen and (max-width: 992px) {
-        height: 20%;
-        display: flex;
+        padding: 2em;
 
         p {
-          margin-bottom: 0;
           align-self: center;
         }
+      }
+
+      &__price {
+        text-align: center;
+        margin-bottom: 1em;
       }
     }
   }
@@ -139,7 +154,7 @@
     }
 
     @media screen and (min-width: 992px) {
-      width: 61.8%;
+      width: 55%;
     }
 
     .swiper-container {
@@ -231,6 +246,11 @@
     &:nth-child(2) {
       margin-bottom: 0.5em;
     }
+  }
+
+  h2,
+  p {
+    direction: ltr;
   }
 
   &::-webkit-scrollbar {
@@ -365,4 +385,32 @@
   text-align: center;
   color: #fff;
   padding-top: 0.25em;
+}
+
+.order-button,
+.order-button:active {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  top: 1.5em;
+  right: 1.5em;
+  color: white;
+  display: block;
+  border: 1px solid #fff;
+  text-align: center;
+  align-self: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  p {
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    background-color: #fff;
+
+    p {
+      color: #303030;
+    }
+  }
 }

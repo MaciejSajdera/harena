@@ -97,58 +97,6 @@ export const query = graphql`
       adressData2
       phoneNumber
       emailAdress
-      instagramicon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      instagramIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      instagramLink
-      facebookicon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      facebookIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      facebookLink
-      behanceIcon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      behanceIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      behanceLink
-      elloCoIcon {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      elloIconHover {
-        fixed(height: 35) {
-          src
-          base64
-        }
-      }
-      elloCoLink
     }
 
     menuLeftIndex: datoCmsMenuLeft(locale: { eq: $locale }) {

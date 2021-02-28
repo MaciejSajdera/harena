@@ -24,6 +24,8 @@ class ContextProviderComponent extends React.Component {
       langToggle: this.langToggle,
       handleNavToggle: this.handleNavToggle,
       navToggled: false,
+      handleContactFormToggle: this.handleContactFormToggle,
+      isFormOpen: false,
     }
   }
 
@@ -49,6 +51,10 @@ class ContextProviderComponent extends React.Component {
 
   langToggle = () => {
     this.setState(prevState => ({ langChosen: !prevState.langChosen }))
+  }
+
+  handleContactFormToggle = () => {
+    this.setState(prevState => ({ isFormOpen: !prevState.isFormOpen }))
   }
 
   render() {
