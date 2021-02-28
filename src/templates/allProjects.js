@@ -182,6 +182,10 @@ export const query = graphql`
       adressData2
       phoneNumber
       emailAdress
+      behanceLink
+      facebookLink
+      elloCoLink
+      instagramLink
     }
 
     menuLeftIndex: datoCmsMenuLeft(locale: { eq: $locale }) {
