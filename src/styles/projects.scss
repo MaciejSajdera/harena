@@ -81,7 +81,6 @@
 
     @media screen and (max-width: 992px) {
       order: 2;
-      height: 50vh;
     }
 
     @media screen and (min-width: 992px) {
@@ -496,8 +495,8 @@
 .close-lightbox {
   cursor: pointer;
   position: absolute;
-  top: -40px;
-  right: 20px;
+  top: -20px;
+  right: 0px;
   display: block;
   width: 40px;
   height: 40px;
@@ -506,4 +505,9 @@
   background-repeat: no-repeat;
   background-size: contain;
   transition: all 0.5s ease-in;
+
+  @media screen and (min-width: 992px) {
+    top: -40px;
+    right: 20px;
+  }
 }

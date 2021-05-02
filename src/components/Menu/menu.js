@@ -322,6 +322,7 @@ const Menu = ({
                   >
                     <div className="menu-grouped-items">
                       <AniLink
+                        className="menu-link"
                         cover
                         direction="right"
                         duration={2.2}
@@ -340,39 +341,15 @@ const Menu = ({
                             : `/${about.locale}/lookbook`
                         }
                       >
-                        <h3>{dataMenuLeft.projectsHeader}</h3>
+                        {dataMenuLeft.projectsHeader}
                       </AniLink>
 
-                      {/* <Link
-                        to={
-                          category.locale === "pl"
-                            ? `/${category.categoryFirstSlug}`
-                            : `/${about.locale}/${category.categoryFirstSlug}`
-                        }
-                      >
-                        <p className={`project-subfield`}>
-                          {dataMenuLeft.projectsSubfield1}
-                        </p>
-                      </Link> */}
-
-                      {/* <Link
-                        to={
-                          category.locale === "pl"
-                            ? `/${category.categorySecondSlug}`
-                            : `/${about.locale}/${category.categorySecondSlug}`
-                        }
-                      >
-                        <p className={`project-subfield`}>
-                          {dataMenuLeft.projectsSubfield2}
-                        </p>
-                      </Link> */}
-                    </div>
-
-                    <AniLink
-                      cover
-                      direction="right"
-                      duration={2.2}
-                      bg={`
+                      <AniLink
+                        className="menu-link"
+                        cover
+                        direction="right"
+                        duration={2.2}
+                        bg={`
                         url(${bgLogo})
                         center / cover   /* position / size */
                         no-repeat        /* repeat */
@@ -381,26 +358,25 @@ const Menu = ({
                         content-box      /* clip */
                         black            /* color */
                       `}
-                      // to={`/${offer.slug}`}
-                      to={
-                        about.locale === "pl"
-                          ? `/${offer.slug}`
-                          : `/${about.locale}/${offer.slug}`
-                      }
-                    >
-                      <h3>
+                        // to={`/${offer.slug}`}
+                        to={
+                          about.locale === "pl"
+                            ? `/${offer.slug}`
+                            : `/${about.locale}/${offer.slug}`
+                        }
+                      >
                         {dataMenuLeft.offerHeader}
                         {/* <p className="offer-subfield">
                           {dataMenuLeft.}
                         </p> */}
-                      </h3>
-                    </AniLink>
+                      </AniLink>
 
-                    <AniLink
-                      cover
-                      direction="right"
-                      duration={2.2}
-                      bg={`
+                      <AniLink
+                        className="menu-link"
+                        cover
+                        direction="right"
+                        duration={2.2}
+                        bg={`
                           url(${bgLogo})
                           center / cover   /* position / size */
                           no-repeat        /* repeat */
@@ -409,15 +385,15 @@ const Menu = ({
                           content-box      /* clip */
                           black            /* color */
                         `}
-                      to={
-                        about.locale === "pl"
-                          ? `/${about.slug}`
-                          : `/${about.locale}/${about.slug}`
-                      }
-                    >
-                      <h3>{dataMenuLeft.aboutHeader}</h3>
-                    </AniLink>
-
+                        to={
+                          about.locale === "pl"
+                            ? `/${about.slug}`
+                            : `/${about.locale}/${about.slug}`
+                        }
+                      >
+                        {dataMenuLeft.aboutHeader}
+                      </AniLink>
+                    </div>
                     {/* <div className="menu-grouped-items">
                           <h3>{dataMenuLeft. }</h3>
 

@@ -17,7 +17,11 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
   const [state, setState] = React.useState({})
 
   const handleChange = e => {
-    setState({ ...state, [e.target.name]: e.target.value })
+    setState({
+      ...state,
+      [e.target.name]:
+        e.target.value.length > 0 ? e.target.value : e.target.placeholder,
+    })
   }
 
   const handleSubmit = e => {
@@ -111,19 +115,27 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                   </p>
 
                   <p>
-                    <input
-                      type="text"
-                      name="subject"
-                      placeholder={data.pl.subject}
-                      onChange={handleChange}
-                    />
+                    <myContext.Consumer>
+                      {({ nameOfItemOrdered }) => (
+                        <input
+                          type="text"
+                          name="subject"
+                          placeholder={
+                            nameOfItemOrdered
+                              ? nameOfItemOrdered
+                              : data.en.subject
+                          }
+                          onChange={handleChange}
+                        />
+                      )}
+                    </myContext.Consumer>
                   </p>
 
                   <p>
                     <input
                       type="text"
                       name="name"
-                      placeholder={data.pl.firstName}
+                      placeholder={data.en.firstName}
                       onChange={handleChange}
                     />
                   </p>
@@ -131,7 +143,7 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     <input
                       type="text"
                       name="surname"
-                      placeholder={data.pl.surname}
+                      placeholder={data.en.surname}
                       onChange={handleChange}
                     />
                   </p>
@@ -139,7 +151,7 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     <input
                       type="tel"
                       name="phone"
-                      placeholder={data.pl.phoneNumber}
+                      placeholder={data.en.phoneNumber}
                       required
                       onChange={handleChange}
                     />
@@ -213,7 +225,6 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                               ? nameOfItemOrdered
                               : data.pl.subject
                           }
-                          value={nameOfItemOrdered ? nameOfItemOrdered : ""}
                           onChange={handleChange}
                         />
                       )}
