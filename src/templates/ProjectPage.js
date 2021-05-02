@@ -95,7 +95,7 @@ class ProjectPage extends Component {
         //   instance.element().querySelector("a").onclick = instance.close
         // }
 
-        const Swiper = require("Swiper").default
+        const Swiper = require("swiper").default
 
         var productGallery_lightbox = new Swiper(".swiper-lightbox", {
           direction: "horizontal",
