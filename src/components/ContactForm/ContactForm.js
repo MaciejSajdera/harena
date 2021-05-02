@@ -17,12 +17,13 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
   const [state, setState] = React.useState({})
 
   const handleChange = e => {
-    setState({
-      ...state,
-      [e.target.name]:
-        e.target.value.length > 0 ? e.target.value : e.target.placeholder,
-    })
+    setState({ ...state, [e.target.name]: e.target.value })
   }
+
+  // const handleProductName = e => {
+  //   setState({ ...state, [e.target.name]: productName })
+  //   console.log(productName)
+  // }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -71,8 +72,61 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
     }
   `)
 
+  let productName
+
+  let subjectInputPL
+
+  if (productName) {
+    subjectInputPL = (
+      <input
+        type="text"
+        name="subject"
+        placeholder={productName}
+        value={productName}
+      />
+    )
+  } else {
+    subjectInputPL = (
+      <input
+        id="subjectInput"
+        type="text"
+        name="subject"
+        placeholder={data.pl.subject}
+        onChange={handleChange}
+      />
+    )
+  }
+
+  let subjectInputEN
+
+  if (productName) {
+    subjectInputEN = (
+      <input
+        type="text"
+        name="subject"
+        placeholder={productName}
+        value={productName}
+      />
+    )
+  } else {
+    subjectInputEN = (
+      <input
+        type="text"
+        name="subject"
+        placeholder={data.pl.subject}
+        onChange={handleChange}
+      />
+    )
+  }
+
   return (
     <div className="contact-form">
+      <myContext.Consumer>
+        {({ nameOfItemOrdered }) => {
+          productName = nameOfItemOrdered
+        }}
+      </myContext.Consumer>
+
       <Location>
         {({ location }) => {
           let currentPath = location.pathname.toString()
@@ -114,22 +168,7 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     <input name="bot-field" onChange={handleChange} />
                   </p>
 
-                  <p>
-                    <myContext.Consumer>
-                      {({ nameOfItemOrdered }) => (
-                        <input
-                          type="text"
-                          name="subject"
-                          placeholder={
-                            nameOfItemOrdered
-                              ? nameOfItemOrdered
-                              : data.en.subject
-                          }
-                          onChange={handleChange}
-                        />
-                      )}
-                    </myContext.Consumer>
-                  </p>
+                  <p>{subjectInputEN}</p>
 
                   <p>
                     <input
@@ -214,22 +253,7 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                     <input name="bot-field" onChange={handleChange} />
                   </p>
 
-                  <p>
-                    <myContext.Consumer>
-                      {({ nameOfItemOrdered }) => (
-                        <input
-                          type="text"
-                          name="subject"
-                          placeholder={
-                            nameOfItemOrdered
-                              ? nameOfItemOrdered
-                              : data.pl.subject
-                          }
-                          onChange={handleChange}
-                        />
-                      )}
-                    </myContext.Consumer>
-                  </p>
+                  <p>{subjectInputPL}</p>
 
                   <p>
                     <input

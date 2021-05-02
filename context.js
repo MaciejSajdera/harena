@@ -57,6 +57,11 @@ class ContextProviderComponent extends React.Component {
   handleContactFormToggle = itemsName => {
     this.setState(prevState => ({ isFormOpen: !prevState.isFormOpen }))
     this.setState(prevState => ({ nameOfItemOrdered: itemsName }))
+    console.log(itemsName)
+
+    if (itemsName !== undefined) {
+      document.querySelector("#subjectInput").value = itemsName
+    }
   }
 
   render() {
