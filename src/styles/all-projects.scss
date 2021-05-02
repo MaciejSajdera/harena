@@ -1,20 +1,25 @@
+.all-grid {
+  min-height: 90vh;
+  background-color: #0c0c0c;
+}
+
 .all-grid-bg {
   display: flex;
   flex-flow: column;
-  background-color: #0c0c0c;
-  min-height: 100vh;
 
   @media screen and (min-width: 992px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 10vh;
   }
 
   .single-project-tile {
-    height: 40vh;
+    min-height: 45vh;
     overflow: hidden;
+    position: relative;
 
     @media screen and (min-width: 992px) {
-      height: 27em;
+      min-height: 90vh;
     }
 
     span {
@@ -33,9 +38,25 @@
       }
     }
 
+    &:after {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      content: "";
+      background: black;
+      opacity: 0.2;
+      top: 0;
+      display: block;
+      transition: all 0.3s ease-in !important;
+    }
+
     &:hover {
       span {
         transform: scale(1.05);
+      }
+
+      &:after {
+        opacity: 0;
       }
     }
 
@@ -62,7 +83,7 @@
         // transform: translateY(-150%);
         .read-more {
           &:after {
-            width: 4em;
+            width: 100%;
           }
         }
       }
@@ -87,7 +108,7 @@
 
           .read-more {
             &:after {
-              width: 4em;
+              width: 100%;
             }
           }
         }

@@ -16,7 +16,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   })
 
   locales.forEach(locale => {
-    const prefix = locale === "pl" ? `all` : `${locale}/all`
+    const prefix = locale === "pl" ? `lookbook` : `${locale}/lookbook`
     createPage({
       path: `/${prefix}`,
       component: path.resolve(`src/templates/allProjects.js`),
@@ -146,7 +146,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   })
 
   contactPageQuery.data.en.nodes.forEach(item => {
-    let url = `/${item.slug}`
+    let url = `${item.locale}/${item.slug}`
     createPage({
       path: url,
       component: path.resolve(`src/templates/offer.js`),

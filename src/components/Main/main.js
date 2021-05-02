@@ -1,11 +1,13 @@
 import React, { useState } from "react"
 
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
 import LazyLoad from "react-lazyload"
 import posed from "react-pose"
-
+import bgLogo from "../../images/harena-page-transition.png"
 import TransitionLink from "gatsby-plugin-transition-link"
 import scrollTo from "gatsby-plugin-smoothscroll"
-
+import "swiper/swiper.scss"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, {
   Navigation,
@@ -14,8 +16,18 @@ import SwiperCore, {
   Keyboard,
   Mousewheel,
   Autoplay,
+  Parallax,
 } from "swiper"
-SwiperCore.use([Navigation, Mousewheel, Keyboard, A11y, Lazy, Autoplay])
+
+SwiperCore.use([
+  Navigation,
+  Mousewheel,
+  Keyboard,
+  A11y,
+  Lazy,
+  Autoplay,
+  Parallax,
+])
 
 class Main extends React.Component {
   constructor(props) {
@@ -45,9 +57,11 @@ class Main extends React.Component {
 
   render() {
     let data = this.props.data
+    let offer = this.props.offer
+    console.log(offer)
 
     return (
-      <main>
+      <main className={`home`}>
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
@@ -57,11 +71,12 @@ class Main extends React.Component {
           navigation
           keyboard
           a11y
+          parallax={true}
+          speed={1500}
           autoplay={{
             delay: 6000,
             stopOnLastSlide: true,
           }}
-          lazy={{ loadPrevNext: true, loadPrevNextAmount: 3 }}
         >
           {data.nodes
             .sort((a, b) => {
@@ -81,7 +96,6 @@ class Main extends React.Component {
                   key={index}
                   id={`slide-id-${index}`}
                   onClick={this.handleTransitionLinkType}
-                  onMouseLeave={this.handleOnMouseLeave}
                   // onClick={e => scrollTo(`#slide-id-${index}`)}
                 >
                   <div
@@ -93,6 +107,42 @@ class Main extends React.Component {
                       backgroundPosition: `center`,
                     }}
                   >
+                    <div className="slogans-wrapper">
+                      <h1 data-swiper-parallax="-300">
+                        {element.homeTextSlide1}
+                      </h1>
+                      <h2 data-swiper-parallax="-500">
+                        {element.homeTextSlide2}
+                      </h2>
+                      <div
+                        className="cta-button__holder"
+                        data-swiper-parallax="-700"
+                      >
+                        {/* <AniLink
+                          className="cta-button"
+                          cover
+                          direction="right"
+                          duration={2.2}
+                          bg={`
+                            url(${bgLogo})
+                            center / cover
+                            no-repeat
+                            fixed
+                            padding-box
+                            content-box
+                            black
+                          `}
+                          to={
+                            offer.locale === "pl"
+                              ? `/lookbook`
+                              : `/${offer.locale}/lookbook`
+                          }
+                        >
+                          Lookbook
+                        </AniLink> */}
+                      </div>
+                    </div>
+
                     {/* <div className={`title-container`}>
                       <h2 className={`project-title-1`}>
                         {element.titlePart1}

@@ -5,6 +5,7 @@ import { RiArrowGoBackFill } from "react-icons/ri"
 import { graphql, useStaticQuery } from "gatsby"
 // import { useForm } from "react-hook-form";
 import myContext from "../../../context"
+import * as basicLightbox from "basiclightbox"
 
 function encode(data) {
   return Object.keys(data)
@@ -202,12 +203,21 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
                   </p>
 
                   <p>
-                    <input
-                      type="text"
-                      name="subject"
-                      placeholder={data.pl.subject}
-                      onChange={handleChange}
-                    />
+                    <myContext.Consumer>
+                      {({ nameOfItemOrdered }) => (
+                        <input
+                          type="text"
+                          name="subject"
+                          placeholder={
+                            nameOfItemOrdered
+                              ? nameOfItemOrdered
+                              : data.pl.subject
+                          }
+                          value={nameOfItemOrdered ? nameOfItemOrdered : ""}
+                          onChange={handleChange}
+                        />
+                      )}
+                    </myContext.Consumer>
                   </p>
 
                   <p>

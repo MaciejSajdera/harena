@@ -4,6 +4,9 @@ import { Link, useStaticQuery } from "gatsby"
 import myContext from "../../../context"
 import ContactForm from "../ContactForm/ContactForm"
 
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import bgLogo from "../../images/harena-page-transition.png"
+
 const Menu = ({
   dataMenu,
   dataMenuLeft,
@@ -109,7 +112,7 @@ const Menu = ({
                     >
                       <svg
                         id="Bold"
-                        enable-background="new 0 0 24 24"
+                        // enable-background="new 0 0 24 24"
                         height="24"
                         viewBox="0 0 24 24"
                         width="24"
@@ -290,28 +293,55 @@ const Menu = ({
                 </div>
 
                 <div className="menu-wrapper">
-                  <Link to={`/`} className={`link-bottom-logo`}>
+                  <AniLink
+                    cover
+                    direction="right"
+                    duration={2.2}
+                    bg={`
+                        url(${bgLogo})
+                        center / cover   /* position / size */
+                        no-repeat        /* repeat */
+                        fixed            /* attachment */
+                        padding-box      /* origin */
+                        content-box      /* clip */
+                        black            /* color */
+                      `}
+                    to={`/`}
+                    className={`link-bottom-logo`}
+                  >
                     <img
                       className={`bottom-menu-logo`}
                       src={darkLogo}
                       alt=""
                     ></img>
-                  </Link>
+                  </AniLink>
                   <div
                     className={`menu-left ${
                       navToggled ? "menu-left-part-active" : ""
                     }`}
                   >
                     <div className="menu-grouped-items">
-                      <Link
+                      <AniLink
+                        cover
+                        direction="right"
+                        duration={2.2}
+                        bg={`
+                            url(${bgLogo})
+                            center / cover   /* position / size */
+                            no-repeat        /* repeat */
+                            fixed            /* attachment */
+                            padding-box      /* origin */
+                            content-box      /* clip */
+                            black            /* color */
+                          `}
                         to={
                           about.locale === "pl"
-                            ? `/all`
-                            : `/${about.locale}/all`
+                            ? `/lookbook`
+                            : `/${about.locale}/lookbook`
                         }
                       >
                         <h3>{dataMenuLeft.projectsHeader}</h3>
-                      </Link>
+                      </AniLink>
 
                       {/* <Link
                         to={
@@ -338,16 +368,47 @@ const Menu = ({
                       </Link> */}
                     </div>
 
-                    <Link to={`/${offer.slug}`}>
+                    <AniLink
+                      cover
+                      direction="right"
+                      duration={2.2}
+                      bg={`
+                        url(${bgLogo})
+                        center / cover   /* position / size */
+                        no-repeat        /* repeat */
+                        fixed            /* attachment */
+                        padding-box      /* origin */
+                        content-box      /* clip */
+                        black            /* color */
+                      `}
+                      // to={`/${offer.slug}`}
+                      to={
+                        about.locale === "pl"
+                          ? `/${offer.slug}`
+                          : `/${about.locale}/${offer.slug}`
+                      }
+                    >
                       <h3>
                         {dataMenuLeft.offerHeader}
                         {/* <p className="offer-subfield">
                           {dataMenuLeft.}
                         </p> */}
                       </h3>
-                    </Link>
+                    </AniLink>
 
-                    <Link
+                    <AniLink
+                      cover
+                      direction="right"
+                      duration={2.2}
+                      bg={`
+                          url(${bgLogo})
+                          center / cover   /* position / size */
+                          no-repeat        /* repeat */
+                          fixed            /* attachment */
+                          padding-box      /* origin */
+                          content-box      /* clip */
+                          black            /* color */
+                        `}
                       to={
                         about.locale === "pl"
                           ? `/${about.slug}`
@@ -355,7 +416,7 @@ const Menu = ({
                       }
                     >
                       <h3>{dataMenuLeft.aboutHeader}</h3>
-                    </Link>
+                    </AniLink>
 
                     {/* <div className="menu-grouped-items">
                           <h3>{dataMenuLeft. }</h3>

@@ -27,7 +27,8 @@ const Header = ({ logoLight }) => {
     }
   `)
 
-  let darkLogo = data.dark.logoImage.fixed.src
+  // let darkLogo = data.dark.logoImage.fixed.src
+  let darkLogo = data.light.logoImage.fixed.src
   let lightLogo = data.light.logoImage.fixed.src
 
   return (

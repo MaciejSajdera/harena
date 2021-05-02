@@ -1,10 +1,10 @@
 import React from "react"
 import { Link, graphql, Img } from "gatsby"
 import { LazyLoadImage } from "react-lazy-load-image-component"
-
 import Menu from "../components/Menu/menu"
 import Header from "../components/Header/header"
-
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import bgLogo from "../images/harena-page-transition.png"
 import myContext from "../../context"
 
 class allProjects extends React.Component {
@@ -48,20 +48,6 @@ class allProjects extends React.Component {
 
     return (
       <>
-        <Header />
-        <Menu
-          dataMenu={menuRightIndex}
-          dataMenuLeft={menuLeftIndex}
-          dataProjects={projects}
-          menuStyle={menuStyle}
-          about={about}
-          logoData={logoData}
-          houseProject={houseProject}
-          interiorProject={interiorProject}
-          category={category}
-          offer={offer}
-        />
-
         <main className={`all-grid`}>
           <div className="all-grid-bg">
             {projects.nodes
@@ -77,45 +63,65 @@ class allProjects extends React.Component {
                 return comparision
               })
               .map((element, index) => (
-                <div className={`single-project-tile`} key={index}>
-                  <Link
-                    to={
-                      element.locale === "pl"
-                        ? `/${element.projectCategory}/${element.slug}`
-                        : `/${element.locale}/${element.projectCategory}/${element.slug}`
-                    }
-                    key={index}
-                  >
-                    {/* <Img fluid={element.thumbnail.fluid} /> */}
+                <AniLink
+                  cover
+                  direction="right"
+                  duration={2.2}
+                  bg={`
+                 url(${bgLogo})
+                 center / cover   /* position / size */
+                 no-repeat        /* repeat */
+                 fixed            /* attachment */
+                 padding-box      /* origin */
+                 content-box      /* clip */
+                 black            /* color */
+               `}
+                  to={
+                    element.locale === "pl"
+                      ? `/${element.projectCategory}/${element.slug}`
+                      : `/${element.locale}/${element.projectCategory}/${element.slug}`
+                  }
+                  className={`single-project-tile`}
+                  key={index}
+                >
+                  {/* <Img fluid={element.thumbnail.fluid} /> */}
 
-                    <LazyLoadImage
-                      // alt={image.alt}
-                      // height={image.height}
-                      effect="blur"
-                      src={element.fullScreenPhoto.fluid.src} // use normal <img> attributes as props
-                      // width={image.width}
-                      style={{
-                        transitionDelay: `${0 + index / 8}s`,
-                      }}
-                    />
+                  <LazyLoadImage
+                    // alt={image.alt}
+                    // height={image.height}
+                    effect="blur"
+                    src={element.fullScreenPhoto.fluid.src} // use normal <img> attributes as props
+                    // width={image.width}
+                    // style={{
+                    //   transitionDelay: `${0 + index / 8}s`,
+                    // }}
+                  />
 
-                    <div className={`title-container`}>
-                      <h2 className={`project-title-1`}>
-                        {element.titlePart1}
-                      </h2>
+                  <div className={`title-container`}>
+                    <h2 className={`project-title-1`}>{element.titlePart1}</h2>
 
-                      <div className="text-on-hover">
-                        <p className="project-slogan">
-                          {element.projectSlogan}
-                        </p>
-                        <p className="read-more">{element.readMore}</p>
-                      </div>
+                    <div className="text-on-hover">
+                      <p className="project-slogan">{element.projectSlogan}</p>
+                      <p className="read-more">{element.readMore}</p>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </AniLink>
               ))}
           </div>
         </main>
+        <Header />
+        <Menu
+          dataMenu={menuRightIndex}
+          dataMenuLeft={menuLeftIndex}
+          dataProjects={projects}
+          menuStyle={menuStyle}
+          about={about}
+          logoData={logoData}
+          houseProject={houseProject}
+          interiorProject={interiorProject}
+          category={category}
+          offer={offer}
+        />
         {/* <div className="projects-category-menu">
           <div className="project-category-wrapper">
             <Link

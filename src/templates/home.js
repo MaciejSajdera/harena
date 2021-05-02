@@ -36,6 +36,7 @@ class Home extends React.Component {
 
     return (
       <>
+        <Main data={homeSlider} offer={offer} />
         <Header />
         <Menu
           dataMenu={menuRightIndex}
@@ -50,7 +51,6 @@ class Home extends React.Component {
           offer={offer}
           homeSlider={homeSlider}
         />
-        <Main data={homeSlider} />
       </>
     )
   }
@@ -67,6 +67,9 @@ export const query = graphql`
             src
           }
         }
+        homeTextSlide1
+        homeTextSlide2
+        position
       }
     }
     projects: allDatoCmsProject(filter: { locale: { eq: $locale } }) {

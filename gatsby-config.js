@@ -1,9 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Harena`,
+    description: `Harena - meble na zamówienie`,
     author: `@gatsbyjs`,
-    siteURL: "https://sayos.pl",
+    siteURL: "http://harenaartis.com",
+    keywords: [
+      `harena`,
+      `meble`,
+      `custom`,
+      `meble designerskie`,
+      `harena.com`,
+      `handmade`,
+      `ręcznie wykonane`,
+    ],
   },
   plugins: [
     `gatsby-plugin-glamor`,

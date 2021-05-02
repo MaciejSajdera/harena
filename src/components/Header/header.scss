@@ -13,10 +13,15 @@
 a.logo-link {
   min-height: 75px;
   min-width: 75px;
+  top: 0;
 
   @media screen and (min-width: 992px) {
     min-height: 100px;
     min-width: 100px;
+    width: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
   }
 
   position: fixed;
@@ -38,9 +43,9 @@ header {
         width: 5rem;
 
         @media screen and (min-width: 992px) {
-          padding-left: 3em;
-          width: 12rem;
-          display: none;
+          padding-left: 0;
+          width: 7rem;
+          // display: none;
         }
       }
     }
