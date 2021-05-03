@@ -13,19 +13,12 @@ exports.handler = async (event, context, callback) => {
     })
     .join("<br><br>")
 
-  // Parse data sent in form hook (email, name etc)
-  const { data } = JSON.parse(event.body)
+  console.log(`payload: ${payload}`)
 
-  // make sure we have data and email
-  if (!data || !data.email) {
-    return callback(null, {
-      statusCode: 400,
-      body: "Mailing details not provided",
-    })
-  }
+  console.log(`email: ${payload.email}`)
 
   const msg = {
-    to: data.email,
+    to: SENDGRID_TO_EMAIL,
     from: email,
     subject: subject ? subject : "Contact Form Submission",
     html: body,
