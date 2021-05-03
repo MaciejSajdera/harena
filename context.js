@@ -57,6 +57,10 @@ class ContextProviderComponent extends React.Component {
   handleContactFormToggle = itemsName => {
     this.setState(prevState => ({ isFormOpen: !prevState.isFormOpen }))
     this.setState(prevState => ({ nameOfItemOrdered: itemsName }))
+
+    fetch("/.netlify/functions/hello")
+      .then(response => response.json())
+      .then(console.log)
   }
 
   render() {
