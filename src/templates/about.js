@@ -41,7 +41,7 @@ const About = props => {
         className={`subpage about ${
           props.transitionStatus === `entered` ? `about-entered` : ``
         }`}
-        style={{
+        css={{
           backgroundImage: `url(${about.aboutBackground.fluid.src})`,
           backgroundSize: `cover`,
         }}

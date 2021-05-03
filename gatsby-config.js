@@ -31,6 +31,7 @@ module.exports = {
     ],
   },
   plugins: [
+    `gatsby-plugin-glamor`,
     `gatsby-plugin-smoothscroll`,
     {
       resolve: `gatsby-plugin-transition-link`,
