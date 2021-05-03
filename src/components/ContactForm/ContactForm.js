@@ -36,7 +36,7 @@ const ContactForm = ({ handleContactFormToggle, props, nameOfItemOrdered }) => {
 
   const initialState = {}
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     const form = e.target
     console.log(form)
@@ -53,6 +53,24 @@ const ContactForm = ({ handleContactFormToggle, props, nameOfItemOrdered }) => {
         navigate(form.getAttribute("action"))
       })
       .catch(error => alert(error))
+
+    //  dev.to/char_bone/using-netlify-lambda-functions-to-send-emails-from-a-gatsbyjs-site-3pnb
+
+    try {
+      const response = await fetch("/.netlify/functions/sendmail", {
+        method: "POST",
+        body: JSON.stringify(state),
+      })
+
+      if (!response.ok) {
+        //not 200 response
+        return
+      }
+
+      //all OK
+    } catch (e) {
+      //error
+    }
   }
 
   // const { register, handleSubmit, watch, errors } = useForm();
