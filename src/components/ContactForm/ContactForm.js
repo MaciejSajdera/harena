@@ -5,7 +5,6 @@ import { RiArrowGoBackFill } from "react-icons/ri"
 import { graphql, useStaticQuery } from "gatsby"
 // import { useForm } from "react-hook-form";
 import myContext from "../../../context"
-import * as basicLightbox from "basiclightbox"
 
 function encode(data) {
   return Object.keys(data)
@@ -13,22 +12,34 @@ function encode(data) {
     .join("&")
 }
 
-const ContactForm = ({ handleContactFormToggle, props }) => {
+const ContactForm = ({ handleContactFormToggle, props, nameOfItemOrdered }) => {
   const [state, setState] = React.useState({})
 
   const handleChange = e => {
+    nameOfItemOrdered
+      ? (state.subject = nameOfItemOrdered)
+      : console.log("no item name provided")
+
     setState({ ...state, [e.target.name]: e.target.value })
+    console.log(state)
   }
 
   // const handleProductName = e => {
-  //   setState({ ...state, [e.target.name]: productName })
-  //   console.log(productName)
+  //   setState({ ...state, subject: productName })
   // }
+
+  // const handleClick = () => {
+  //   this.setState({value: 'another random text'})
+  //   var event = new Event('input', { bubbles: true });
+  //   this.myinput.dispatchEvent(event);
+  // }
+
+  const initialState = {}
 
   const handleSubmit = e => {
     e.preventDefault()
     const form = e.target
-    // console.log(form)
+    console.log(form)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -72,17 +83,18 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
     }
   `)
 
-  let productName
+  // let productName
 
   let subjectInputPL
 
-  if (productName) {
+  if (nameOfItemOrdered) {
     subjectInputPL = (
       <input
         type="text"
         name="subject"
-        placeholder={productName}
-        value={productName}
+        placeholder={nameOfItemOrdered}
+        defaultValue={nameOfItemOrdered}
+        onChange={handleChange}
       />
     )
   } else {
@@ -99,13 +111,13 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
 
   let subjectInputEN
 
-  if (productName) {
+  if (nameOfItemOrdered) {
     subjectInputEN = (
       <input
         type="text"
         name="subject"
-        placeholder={productName}
-        value={productName}
+        placeholder={nameOfItemOrdered}
+        value={nameOfItemOrdered}
       />
     )
   } else {
@@ -121,11 +133,11 @@ const ContactForm = ({ handleContactFormToggle, props }) => {
 
   return (
     <div className="contact-form">
-      <myContext.Consumer>
+      {/* <myContext.Consumer>
         {({ nameOfItemOrdered }) => {
           productName = nameOfItemOrdered
         }}
-      </myContext.Consumer>
+      </myContext.Consumer> */}
 
       <Location>
         {({ location }) => {

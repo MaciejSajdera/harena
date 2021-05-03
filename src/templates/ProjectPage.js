@@ -240,56 +240,6 @@ class ProjectPage extends Component {
             offer={offer}
           />
 
-          {/* {this.props.data.menuRight.phoneNumber} */}
-          {/* <div> */}
-
-          {/* strona projektu: {myProjectData.slug} */}
-          {/* testmenudata: {menuRight.phoneNumber} */}
-          {/* </div> */}
-
-          {/* <div className={`arrow-box box-bt-left`} onClick={handleArrowPrev}>
-          <div className={`menu-trigger`}>
-            <IconContext.Provider
-              value={{ color: "white", size: "4em", height: "100" }}
-            >
-              <HiArrowNarrowUp />
-            </IconContext.Provider>
-          </div>
-        </div> */}
-          {/* 
-        <div className={`arrow-box box-bt-right`} onClick={handleArrowNext}>
-          <div className={`menu-trigger`}>
-            <IconContext.Provider
-              value={{ color: "white", size: "4em", height: "100" }}
-            >
-              <HiArrowNarrowDown />
-            </IconContext.Provider>
-          </div>
-        </div> */}
-
-          {/* <div className="fullscreen-project-image" ref={this.topRef}> */}
-          {/* <img src={`${myProjectData.fullScreenPhoto.fluid.src}`} /> */}
-          {/* <LazyLoadImage
-            // alt={image.alt}
-            // height={image.height}
-            effect="blur"
-            placeholderSrc={myProjectData.fullScreenPhoto.fluid.src}
-            // visibleByDefault
-            src={myProjectData.fullScreenPhoto.fluid.src} // use normal <img> attributes as props
-            // width={image.width}
-          /> */}
-          {/* <LazyLoad ref={this.topRef}>
-          <div
-            className={`slide-bg-fullscreen`}
-            css={{
-              backgroundImage: `url(
-                              ${myProjectData.fullScreenPhoto.fluid.src}
-                            )`,
-            }}
-          ></div>
-        </LazyLoad> */}
-          {/* </div> */}
-
           <div className="project-content-middle" ref={this.nextSectionRef}>
             <div className="content section-left">
               <div className="content-wrapper">

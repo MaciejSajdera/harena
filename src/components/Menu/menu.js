@@ -50,6 +50,7 @@ const Menu = ({
         navToggled,
         set,
         isFormOpen,
+        nameOfItemOrdered,
         handleContactFormToggle,
       }) => (
         <>
@@ -62,7 +63,10 @@ const Menu = ({
             {/* <h3>Napisz do nas</h3> */}
             {/* </div> */}
 
-            <ContactForm handleContactFormToggle={handleContactFormToggle} />
+            <ContactForm
+              handleContactFormToggle={handleContactFormToggle}
+              nameOfItemOrdered={nameOfItemOrdered}
+            />
           </div>
 
           <div
