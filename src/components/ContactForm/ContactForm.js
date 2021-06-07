@@ -60,6 +60,7 @@ const ContactForm = ({ handleContactFormToggle, props, nameOfItemOrdered }) => {
       const response = await fetch("/.netlify/functions/sendmail", {
         method: "POST",
         body: JSON.stringify(state),
+        mystate: state,
       })
 
       if (!response.ok) {
