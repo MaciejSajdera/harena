@@ -80,6 +80,7 @@
     flex-flow: column;
 
     @media screen and (max-width: 992px) {
+      min-height: 50vh;
       order: 2;
     }
 
@@ -447,7 +448,16 @@
   transition: transform 0.4s ease;
   z-index: 1;
   will-change: transform;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 75%;
+   }
+
+  .swiper-slide {
+    background-size: contain!important;
+  }
 }
+
 .basicLightbox__placeholder > iframe:first-child:last-child,
 .basicLightbox__placeholder > img:first-child:last-child,
 .basicLightbox__placeholder > video:first-child:last-child {

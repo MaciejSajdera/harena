@@ -45,10 +45,14 @@ class Main extends React.Component {
     const swiperButtonLeft = document.querySelector(".swiper-button-prev")
     const swiperButtonRight = document.querySelector(".swiper-button-next")
 
+
     setTimeout(() => {
       swiperButtonLeft.classList.add("arrow-entered")
       swiperButtonRight.classList.add("arrow-entered")
-    }, 300)
+
+      document.querySelector("h2") && document.querySelector("h2").classList.add("text-reveal__bottom");
+      document.querySelector("h2") && document.querySelector("h1").classList.add("text-reveal__bottom");
+    }, 1000)
   }
 
   //https://dev.to/mattrothenberg/recreating-pentagram-com-a-deep-dive-with-gatsby-js-h75
@@ -58,7 +62,6 @@ class Main extends React.Component {
   render() {
     let data = this.props.data
     let offer = this.props.offer
-    console.log(offer)
 
     return (
       <main className={`home`}>
@@ -76,6 +79,31 @@ class Main extends React.Component {
           autoplay={{
             delay: 6000,
             stopOnLastSlide: true,
+          }}
+
+          onSlideChange={function() {
+            
+          console.log(this)
+          let count = this.activeIndex;
+
+          let allSlides = document.querySelectorAll(
+            ".swiper-container .swiper-slide"
+          );
+
+          let currentSlide = allSlides[count];
+
+          allSlides.forEach(slide => {
+            slide.querySelector("h2") && slide.querySelector("h2").classList.remove("text-reveal__bottom");
+            slide.querySelector("h1") && slide.querySelector("h1").classList.remove("text-reveal__bottom");
+          })
+
+          currentSlide.querySelector("h1") && currentSlide.querySelector("h1").classList.add("text-reveal__bottom");
+          currentSlide.querySelector("h1") && currentSlide.querySelector("h2").classList.add("text-reveal__bottom");
+
+          
+          
+          console.log(currentSlide)
+          
           }}
         >
           {data.nodes
@@ -108,15 +136,23 @@ class Main extends React.Component {
                     }}
                   >
                     <div className="slogans-wrapper">
-                      <h1 data-swiper-parallax="-300">
+
+                      <span>
+                      <h1 /* data-swiper-parallax="-300" */>
                         {element.homeTextSlide1}
                       </h1>
-                      <h2 data-swiper-parallax="-500">
+                      </span>
+
+                      <span>
+                      <h2 /* data-swiper-parallax="-500" */>
                         {element.homeTextSlide2}
                       </h2>
+                      </span>
+
+
                       <div
                         className="cta-button__holder"
-                        data-swiper-parallax="-700"
+                        /* data-swiper-parallax="-700" */
                       >
                         {/* <AniLink
                           className="cta-button"

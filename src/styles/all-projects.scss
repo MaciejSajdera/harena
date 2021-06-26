@@ -1,6 +1,10 @@
 .all-grid {
-  min-height: 90vh;
+  min-height: 100vh;
   background-color: #0c0c0c;
+
+  @media screen and (min-width: 992px) {
+    min-height: 90vh;
+   }
 }
 
 .all-grid-bg {
@@ -13,8 +17,8 @@
     margin-bottom: 10vh;
   }
 
-  .single-project-tile {
-    min-height: 45vh;
+  .single-project-tile, .single-category-tile {
+    min-height: 34vh;
     overflow: hidden;
     position: relative;
 
