@@ -103,6 +103,7 @@ class ProjectPage extends Component {
           // parallax: true,
           centeredSlides: true,
           slidesPerView: 1,
+          spaceBetween: 50,
           speed: 1000,
           grabCursor: true,
           initialSlide: thisSlideNumber,

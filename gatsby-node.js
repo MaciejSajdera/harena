@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     const prefix = locale === "pl" ? `lookbook` : `${locale}/lookbook`
     createPage({
       path: `/${prefix}`,
-      component: path.resolve(`src/templates/allProjects.js`),
+      component: path.resolve(`src/templates/allCategories.js`),
       context: { locale },
     })
   })
@@ -246,35 +246,41 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   const categoriesFirstQuery = await graphql(`
     query interiorProject {
+
       pl: allDatoCmsCategory(filter: { locale: { eq: "pl" } }) {
         nodes {
           categoryFirstSlug
           locale
         }
       }
+
       en: allDatoCmsCategory(filter: { locale: { eq: "en" } }) {
         nodes {
           categoryFirstSlug
           locale
         }
       }
+      
     }
   `)
 
   const categoriesSecondQuery = await graphql(`
     query interiorProject {
+
       pl: allDatoCmsCategory(filter: { locale: { eq: "pl" } }) {
         nodes {
           categorySecondSlug
           locale
         }
       }
+
       en: allDatoCmsCategory(filter: { locale: { eq: "en" } }) {
         nodes {
           categorySecondSlug
           locale
         }
       }
+
     }
   `)
 
@@ -333,4 +339,55 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       },
     })
   })
+
+
+
+  const allCategoryTypesQuery = await graphql(`
+    query allCategoryTypes {
+      pl: allDatoCmsCategoryType(filter: { locale: { eq: "pl" } }) {
+        nodes {
+          categoryName
+          categorySlug
+          categoryThumbnail {
+            fluid {
+              src
+            }
+          }
+          locale
+        }
+      }
+      en: allDatoCmsCategoryType(filter: { locale: { eq: "en" } }) {
+        nodes {
+          categoryName
+          categorySlug
+          categoryThumbnail {
+            fluid {
+              src
+            }
+          }
+          locale
+        }
+      }
+    }
+  `)
+
+  allCategoryTypesQuery.data.pl.nodes.forEach(item => {
+    let url = `/${item.categorySlug}`
+
+    console.log(item)
+
+    createPage({
+      path: url,
+      component: path.resolve(`src/templates/allProjectsInCategory.js`),
+      context: {
+        // myProjectData: item,
+        locale: item.locale,
+        categorySlug: item.categorySlug,
+        // fullScreenPhoto: item.fullScreenPhoto
+      },
+    })
+  })
+
+
+
 }
