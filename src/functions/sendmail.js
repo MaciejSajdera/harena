@@ -23,8 +23,10 @@ exports.handler = async (event, context, callback) => {
 
   const msg = {
     to: email,
-    from: SENDGRID_TO_EMAIL,
-    fromname: 'Harena',
+    from: {
+      email: SENDGRID_TO_EMAIL,
+      name: 'Harena'
+    },
     subject: subject ? `Potwierdzenie wysłania zagłoszenia - ${subject}` : `Potwierdzenie wysłania zagłoszenia - Harena`,
     html: `Dziękujemy za zainteresowanie naszymi produktami, odpowiemy na Twoje zgłoszenie najszybciej jak to możliwe.`,
   }
