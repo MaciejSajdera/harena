@@ -1,7 +1,9 @@
 main {
+  width: 100%;
   @media screen and (min-width: 992px) {
     .swiper-container {
       height: 90vh;
+      width: 100%;
     }
   }
 
@@ -16,10 +18,10 @@ main {
     }
   }
 
-  .swiper-slide {
-    transition: width 0.7s cubic-bezier(0.39, -0.45, 0.63, 0.62),
-      transform 0.7s linear;
-  }
+  // .swiper-slide {
+  //   transition: width 0.7s cubic-bezier(0.39, -0.45, 0.63, 0.62),
+  //     transform 0.7s linear;
+  // }
 }
 
 .single-project-container {
@@ -176,7 +178,7 @@ main {
 
   h2 {
     color: #fff;
-    font-size: 2.5rem!important;
+    font-size: 2.5rem !important;
     width: 100%;
     text-align: center;
     text-transform: capitalize;
@@ -190,7 +192,6 @@ main {
       color: #d8d8d8;
     }
   }
-
 }
 
 .showColor {
