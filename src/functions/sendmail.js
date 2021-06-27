@@ -22,9 +22,9 @@ exports.handler = async (event, context, callback) => {
   console.log(`mystate: ${mystate}`)
 
   const msg = {
-    to: SENDGRID_TO_EMAIL,
-    from: email,
-    subject: subject ? subject : "Contact Form Submission",
+    to: email,
+    from: SENDGRID_TO_EMAIL,
+    subject: subject ? `Potwierdzenie wysłania zagłoszenia - ${subject}` : `Potwierdzenie wysłania zagłoszenia - Harena`,
     html: `Dziękujemy za zainteresowanie naszymi produktami, odpowiemy na Twoje zgłoszenie najszybciej jak to możliwe.`,
   }
 
